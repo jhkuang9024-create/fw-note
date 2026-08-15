@@ -1,0 +1,45 @@
+update_engine日志位置：/data/misc/update_engine_log
+服务名：android.os.UpdateEngineService
+
+Java 客户端入口：
+frameworks/base/core/java/android/os/UpdateEngine.java
+
+Binder 接口定义（AIDL）: 
+system/update_engine/binder_bindings/android/os/IUpdateEngine.aidl
+system/update_engine/binder_bindings/android/os/IUpdateEngineCallback.aidl
+
+服务端实现:
+system/update_engine/aosp/binder_service_android.cc
+system/update_engine/aosp/binder_service_android.h
+system/update_engine/aosp/update_attempter_android.cc & UpdateAttempterAndroid::ApplyPayload
+system/update_engine/aosp/service_delegate_android_interface.h & ApplyPayload
+
+vendor/amlogic/reference/apps/Updater/src/com/droidlogic/updater/UpdateManager.java
+
+
+错误码枚举：
+system/update_engine/common/error_code.h
+
+客户端方法：
+applyPayload
+bind
+cancel: 终止此次升级
+suspend：暂停升级
+resume：恢复升级
+resetStatus：撤销已完成但未重启的更新状态，会清空 update_engine 进度，下次升级会从头开始
+
+private static final String UPDATE_ENGINE_SERVICE = "android.os.UpdateEngineService";
+public UpdateEngine() {
+        mUpdateEngine = IUpdateEngine.Stub.asInterface(
+                ServiceManager.getService(UPDATE_ENGINE_SERVICE));
+        if (mUpdateEngine == null) {
+            throw new IllegalStateException("Failed to find update_engine");
+        }
+    }
+public void applyPayload(String url, long offset, long size, String[] headerKeyValuePairs) {
+        try {
+            mUpdateEngine.applyPayload(url, offset, size, headerKeyValuePairs);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
