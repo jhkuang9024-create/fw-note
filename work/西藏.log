@@ -1,0 +1,89 @@
+
+
+source build/envsetup.sh && lunch cmcc_xz-userdebug && make apk2bp
+apk2bp device/starnet/cmcc_xz/prebuilts/packages
+
+source build/envsetup.sh && lunch cmcc_xz-userdebug && make installclean && make otapackage aml_upgrade
+
+分支；mr-cmcc-xz2
+
+am broadcast -a android.intent.action.askillsdk.ota -n com.ota.skillsdk/.SkillSdkOtaReceiver --es filePath "/sdcard/cmcc_xz-ota-eng.root.zip"
+
+
+apk信息
+app-YP_SH-V4.0.0.0.25.02.14.middle-release-0385938_signed_signed_Aligned.apk
+包名：com.ysten.order
+
+icntv-YP_SH-V9.0.0.8.021.xizang.25.09.05-release-50bf5df7cc.apk
+包名：tv.icntv.ott
+adb shell am start -n tv.icntv.ott/tv.icntv.ott.icntv
+
+iptv_xizangmobile_zp_540208.10300.102.01_release_signed.apk
+包名：com.iflytek.xiri
+
+问题：
+1.移动高清无法播放/暂停/快进/快退
+视频没有配置转发
+微信西藏对接群-陈瑶帮忙配置
+播放｜暂停， 只有 未来 对接过 
+移动高清：未来宋老师 追梦
+
+
+prepareAsync
+FFP_MSG_OPEN_INPUT
+
+BMCore 所在进程的包名是： tv.icntv.ott
+
+
+07-28 09:51:55.919165  9821 10003 I adbd    : host-19: read failed: Software caused connection abort
+07-28 09:51:55.919312  9821 10003 I adbd    : host-19: connection terminated: read failed
+
+网络连接的广播：ConnectivityService: Sending CONNECTED broadcast
+gitv: 20509 20509 I NetWorkReceiver: onReceive: 
+
+应用侧：
+07-28 11:41:23.523 20509 20509 I NetUtils: onEthernetConnected
+07-28 11:41:23.523 19917 20212 D WSDefaultRM: ### 开始重连 ###
+
+07-28 11:41:23.525 20509 20509 I NewVisionPlayFragment: onUserEvent event NetChangeEvent{type=ETHERNET, signal=0, netChange=true, rssiChange=false}
+07-28 11:41:23.526  1484  1484 D NetListener: updateConnectivity: mConnectedTransports={3}
+07-28 11:41:23.526  1484  1484 D NetListener: updateConnectivity: mValidatedTransports={}
+07-28 11:41:23.526 20509 20509 I NewVisionPlayFragment: onUserEvent  event = NetChangeEvent{type=ETHERNET, signal=0, netChange=true, rssiChange=false}
+07-28 11:41:23.526 20509 20509 I NewVisionPlayFragment: onUserEvent player start-------------: 
+07-28 11:41:23.526 20509 20509 I NewVisionPlayFragment: dispatch  livePresenter =com.gitv.tv.gvp.activity.t.p0@6203651 ， livePlayArgs = LivePlayArgs{chnCode='G_CCTV-1-HQ', dispatchUrl='null', showWave=0, logoUrl='null', bgUrl='null', chnName='null', describe='null', programItem=NewVisionProgramListItem{chnCode='G_CCTV-1-HQ', chnName='CCTV1  综合', dispatchAddress='null', chnEncoded='001', chnType=2, playUrl='http://gdcmcc-livod.dispatcher.gitv.tv/gitv_live/G_CCTV-1-HQ/G_CCTV-1-HQ.m3u8?p=GITV&area=GD_CMCC_GVP', backPlayUrl='http://gdcmcc-livod.dispatcher.gitv.tv/gitv_live/G_CCTV-1-HQ/history.m3u8?p=GITV&area=GD_CMCC_GVP', albumName='null', tvName='null', albumId='null', chnId='null', tvId='null', startTime='20260728110200', endTime='20260728115400', isEffective=0, title='生命树21', injectId='null', isValidProgram=true, aid=0, bigAid=0, baseUrl=null}, videoType='live', delta=0, isVip=0, injectId=null}
+
+
+tcpdump -i any -vv -s 0 -w /data/test.pcap &
+
+
+
+
+07-30 15:24:45.670 E/BMCore  ( 2708): mediacodec_select_callback: onSelectCodec failed
+07-30 15:24:45.670 E/BMCore  ( 2708): amc: no suitable codec
+FFmpeg 视频软解线程启动
+07-30 15:24:45.678 I/BMCore  ( 2708): SDL_RunThread: [15271] ff_video_dec
+
+
+killall -9 tcpdump
+
+
+monkey -p com.android.camera2 1
+
+
+
+Unable to start service Intent { cmp=vulture.app.home/com.baidu.duer.videoplayer.service.VideoBotService } U=0: not found
+语音要通过 com.baidu.duer.videoplayer.service.VideoBotService 把播放指令交给播放器，但该 Service not found ，导致播放启动失败
+
+
+presigned: false,
+certificate: "platform"
+
+su
+logcat -b all -v threadtime > /data/logcat_2.log &
+
+
+device/amlogic/raman/BoardConfig.mk
+BOARD_EROFS_COMPRESSOR := lz4
+
+
+

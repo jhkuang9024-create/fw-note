@@ -1,0 +1,120 @@
+
+
+root/*#@Pbx@#*
+ost 75p
+    HostName 192.168.0.75
+    User root
+    Port 21022
+
+路由平台账号/密码
+CMCCAdmin/aDm8H%MdA
+
+我的账号：deviid -s 1664011529111132090000010 -a 28:BE:F3:24:7A:81 -m 28:BE:F3:24:7A:81 -M TB712 -u Star-Net -i 592288 -n TB712 -c 111132090000010 -p 25d3f5fa16e9 -t 0032360080742080260628BEF3247A81
+重置账号：deviid -s 1884011529111132090000010 -a 58:BE:F3:24:7A:81 -m 58:BE:F3:24:7A:81 -M TB712 -u Star-Net -i 592288 -n TB712 -c 222232090000010 -p 52d3f5fa16e9 -t 3230060080742080260628BEF3247A81
+
+ro.product.cmcc_deviceId=592288
+
+升级广播
+adb shell am broadcast -a android.intent.action.askillsdk.ota -n com.ota.skillsdk/.SkillSdkOtaReceiver --es filePath "/sdcard/update.zip"
+
+外部支持
+微信入库群：Abby帮配置老人模式、儿童模式、无线投屏
+
+
+adb kill-server
+adb start-server
+
+厂商是Star-Net，报备过的，不然移动高清会提示当前设备不可用
+新设备使用移动高清要报备
+gmodel: TB712
+gmanufacturer: Star-Net
+设备类型：触屏设备
+给移动高清报备抄送局方
+
+
+处理省份集成的apk要系统签名的问题
+commit b191124636cac8e004f6c2e889b744cdf709012c
+
+
+底座日志：
+拆分前：
+/sdcard/Android/data/com.cmcc.jarvis/cache/logs
+
+拆分后：
+智话日志：/sdcard/Android/data/com.cmhi.universalapp.aiotel/cache/logs
+智能体日志：/sdcard/Android/data/com.cmcc.lingxiagent/cache/logs
+安防日志：/sdcard/cmcc/thirdapplogs/anfang
+
+ajlauncher日志：
+/storage/emulated/0/Android/data/com.komect.ajlauncher/files/com.komect.ajlauncher/xLog
+
+
+USB adb
+common/common14-5.15/common/common_drivers/arch/arm64/boot/dts/amlogic/s6_s905l5ap_bq210.dts
+&crg_otg {
+	status = "okay";
+	controller-type = <2>; /* 0~3: normal, host, device, otg */
+};
+
+设置默认launcher
+adb shell pm set-home-activity com.komect.ajlauncher/.SplashActivity
+
+
+presigned: false,
+certificate: "platform"
+
+
+2.6.0的底座在关闭wifi后退出设置，再次打开设置会自动打开wifi并连上是应用的正常功能
+
+讯飞进程：
+ps -e | grep ifly
+
+长按电源键功能控制属性：
+persist.vendor.long.power.ability=sleep,deepsleep,reboot,shutdown
+默认显示重新启动和关机:reboot,shutdown
+
+
+// 切换到root权限
+su;
+// 清理历史日志
+logcat -c
+// 开始抓日志
+logcat > /data/0001.log &
+// 执行要抓日志对应的操作
+// 结束抓日志
+killall -9 logcat
+
+
+微信入库群：@Martin 颜老师，麻烦配置下长辈模式
+语音搜索出来的电影不能播放是智能体的问题，后续处理
+入库版移动高清日志commands可以查看支持那些指令
+
+MediaCodec（Android 系统的硬件解码接口）
+
+取消升级：update_engine_client --cancel
+
+monkey启动原生相机：monkey -p com.android.camera2 1
+
+
+串口/adb 是否需要密码：PRODUCT_SUPPORT_CONSOLE_PASSWORD
+
+
+
+
+
+
+
+
+
+
+我们deepseek的大模型，claude去修改配置，url填写：http://192.168.0.20:3021，token用我发给他们的就行，env里加个变量说是能提高命中率："CLAUDE_CODE_ATTRIBUTION_HEADER": "0",
+
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://192.168.0.20:3021",
+    "ANTHROPIC_AUTH_TOKEN": "starnet-176cedd2-da86-4d7f-b97f-daa9acfe5095",
+    "CLAUDE_CODE_EFFORT_LEVEL": "max",
+    "CLAUDE_CODE_ATTRIBUTION_HEADER": "0"
+  }
+}
+starnet-176cedd2-da86-4d7f-b97f-daa9acfe5095

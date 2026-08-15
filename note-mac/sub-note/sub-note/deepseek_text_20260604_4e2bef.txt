@@ -1,0 +1,27 @@
+客户端(进程A)                         Binder驱动                      服务端(进程B :remote)
+─────────────                      ────────────                     ────────────────
+Proxy.calculateSum(3,5)
+  -> Parcel 写入参数
+  -> BinderProxy.transact()
+      -> BpBinder::transact()
+          -> IPCThreadState::transact()
+              write BC_TRANSACTION + handle
+              ioctl(BINDER_WRITE_READ)  ──────>
+                                                         <─────── Binder线程正在
+                                                                   joinThreadPool
+                                   驱动查找handle对应节点
+                                   挂入目标线程的读取队列
+                                   
+                                                                 <────── ioctl返回
+                                                                       BR_TRANSACTION
+                                                                 executeCommand
+                                                                   BBinder->transact
+                                                                   Stub.onTransact
+                                                                     调用calculateSum
+                                                                   write reply
+                                                                   sendReply BC_REPLY
+                                   驱动接收BC_REPLY
+              <────── ioctl返回
+                 BR_REPLY
+         reply->readInt() = 8
+  <- 返回8

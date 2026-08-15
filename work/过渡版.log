@@ -1,0 +1,103 @@
+root/star@Yk8
+
+
+串口账号root
+密码是star@Yk8
+
+# 禁止内核日志输出
+echo 0 > /proc/sys/kernel/printk
+
+# 跳过导入配置文件界面，执行过则不需要
+echo 1>/mnt/vendor/param/usermode
+
+cd /sys/class/unifykeys
+echo "usid" > name
+echo 1664011529111132090000004 > write
+echo mac > name
+echo 28:BE:F3:24:7A:51 > write
+echo mac_wifi > name                            
+echo 28:BE:F3:24:7A:51 > write
+echo sn > name
+echo 1664011529111132090000004 > write
+echo cmccpwd > name
+echo de49bf3d437f > write
+echo cmei > name
+echo 111132090000004 > write
+echo prd_date > name
+echo 20260813 > write
+
+
+console:/ # cd /sys/class/unifykeys/                                           
+console:/sys/class/unifykeys # ls
+attach  exist list name secure unifykeys write 
+encrypt help  lock read size   version   
+console:/sys/class/unifykeys # echo prd_date > name 
+console:/sys/class/unifykeys # echo 20260813 > write                           
+console:/sys/class/unifykeys # 
+
+
+
+
+需要注意RF txt 文件要保留老的
+hardware/wifi/amlogic/drivers/w2/common/aml_w2_rf_0640_0111.txt
+hardware/wifi/amlogic/drivers/w2/common/aml_w2_rf_0641_0332.txt
+
+
+AndLink持久化存储：
+content call --uri content://com.cmcc.jarvis.permissionprovider --method getConnectToken
+
+
+老人模式、儿童模式、无线投屏在入库群叫Abby老师配置，需要设备型号TB712/612, 设备ID592481。martin颜老师配置的
+
+
+[ro.build.date]: [Thu Aug  6 09:31:48 AM CST 2026]
+
+
+export STARNET_ENABLE=true
+
+device/amlogic/common/core_amlogic.mk
+ifeq ($(STARNET_ENABLE),true)
+include vendor/starnet/starnet.mk
+endif
+
+
+isUserSetupComplete()
+
+su
+logcat > /data/start_install_002.log &
+
+广东灵犀管家安装失败原因安装失败的原因：ContentProvider 冲突
+在/system/app/AiAreaHost/AiAreaHost.apk=com.iflytek.aiarea已经有com.iflytek.aiareahome中的provider
+provider: com.iflytek.vlib.core.provider
+
+
+vendor/p291_tb611/configs/mk/device/amlogic/common/products/iptv/product_iptv.mk
+PRODUCT_DEL_PACKAGES += 
+    Camera2   // 删除
+
+device/amlogic/common/products/iptv/product_iptv.mk
+
+
+mPowerManager.goToSleep(SystemClock.uptimeMillis(),PowerManager.GO_TO_SLEEP_REASON_POWER_BUTTON, 0);
+
+
+声音输出：vendor.audio.hdmioutput
+
+
+su
+logcat > /data/player_margin_3.log &
+
+
+播放视频左右黑色边框：vendor/amlogic/common/apps/TvInput/DroidLogicTvInput/src/com/droidlogic/tvinput/settings/SettingsManager.java
+
+
+
+处理完成过渡版问题：投屏问题、播放本地视频相关的问题、切换声音输出、熄屏拉起桌面、播放视频黑色边框问题、合适配讯飞合性能优化的patch
+广东中屏：
+    1. 排查手机分享图片后中屏不展示的问题，底座问题
+    2. 处理出厂音量太低的问题，处理中
+    3. 处理没有自动开机问题，以抓取日志给晶晨分析
+
+
+su
+logcat > /data/power_on.log &

@@ -1,0 +1,42 @@
+cat /proc/asound/pcm
+lsmod | grep 7243
+dumpsys media.audio_policy | grep -A 10 "Devices"
+
+console:/ $ cat /proc/asound/pcm
+
+查看当前顶层的activity
+dumpsys activity top | grep ACTIVITY
+
+
+
+
+
+
+
+
+
+
+
+
+
+操作 Settings.Global
+修改值
+adb shell settings put global <key> <value>
+
+读取值
+adb shell settings get global <key>
+
+删除值
+adb shell settings delete global <key>
+
+查看所有 Global 字段
+adb shell settings list global
+
+常见的Settings表分三类
+| 表      | adb 命令                | 说明     |
+| ------ | --------------------- | ------ |
+| System | `settings put system` | 普通系统设置 |
+| Secure | `settings put secure` | 安全相关设置 |
+| Global | `settings put global` | 全局系统设置 |
+
+

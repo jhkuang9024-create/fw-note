@@ -1,0 +1,48 @@
+/*
+ * Copyright (c) 2014 Amlogic, Inc. All rights reserved.
+ *
+ * This source code is subject to the terms and conditions defined in the
+ * file 'LICENSE' which is part of this source code package.
+ *
+ * Description: JAVA file
+ */
+
+package com.android.server;
+
+import android.content.Context;
+import android.net.Uri;
+import android.os.SystemProperties;
+import android.provider.Settings;
+import android.util.Log;
+
+import com.android.server.SystemControlManager;
+//import com.droidlogic.app.OutputModeManager;
+
+public class DroidLogicUtils {
+    public static final String TAG = "DroidLogicUtils";
+
+    public static SystemControlManager getSystemControlManager() {
+        return SystemControlManager.getInstance();
+    }
+
+    public static boolean isTv() {
+        return getSystemControlManager().getPropertyBoolean("ro.vendor.platform.has.tvuimode", false);
+    }
+
+    public static boolean isNeedBenchPromote() {
+        return getSystemControlManager().getPropertyBoolean("ro.vendor.platform.need.bench.promote", false);
+    }
+
+    public static boolean getAudioDebugEnable() {
+        return SystemProperties.getBoolean("sys.droidlogic.audio.debug", false);
+    }
+
+    public static boolean isBuildLivetv() {
+        return getSystemControlManager().getPropertyBoolean("ro.vendor.platform.build.livetv", false);
+    }
+
+    // 1: soundbar mode on; 0: soundbar mode off
+    public static boolean isSoundbar() {
+        return getSystemControlManager().getPropertyInt("persist.vendor.media.audio.soundbar.mode", 0) == 1;
+    }
+}

@@ -1,0 +1,22 @@
+
+标准版-2G：
+长安电源无待机
+dumpsys命令超时
+点击屏保无反应
+
+50\40\37 27/17/8
+37
+
+
+
+
+未接hdmi,暂停播放视频类（拉起activity实现）
+连接hdmi:
+    电视输出：电视继续播放有声音，灵犀屏熄屏，
+    灵犀屏输出：
+
+
+USB adb
+vendor.usb.otg_mode=DEVICE
+persist.usb.otg_mode=DEVICE
+ro.serialno在property_service.cpp里写

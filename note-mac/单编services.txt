@@ -1,0 +1,7 @@
+单独编译services:
+./compile.sh -m frameworks/base/services
+替换：
+adb push services.jar /system/framework/
+删除优化：
+adb shell rm -rf /data/dalvik-cache/*
+adb shell rm -rf /data/system/package_cache/*

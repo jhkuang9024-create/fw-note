@@ -1,0 +1,286 @@
+
+aosp14中有哪些常见的native service
+
+在 AOSP 14 中，Native Service（C/C++实现的 Binder Service 或 Native Daemon） 数量很多，大致可以分为以下几类。
+
+1. 图形显示相关
+这是 Framework 开发最常接触的一类。
+
+Service	进程	作用
+SurfaceFlinger	surfaceflinger	Android 图层合成器
+InputFlinger	system_server/native	输入事件分发
+SensorService	system_server/native	传感器管理
+DisplayService	system_server/native	显示设备管理
+GPUService	system_server/native	GPU状态管理
+其中最重要的是：
+
+SurfaceFlinger
+负责：
+
+Layer管理
+
+BufferQueue消费
+
+HWC调用
+
+VSYNC同步
+
+最终屏幕合成
+
+源码：
+
+frameworks/native/services/surfaceflinger/
+它是 Android 图形系统核心。
+
+2. 音频相关
+AudioFlinger
+负责：
+
+音频混音
+
+PCM输出
+
+AudioTrack管理
+
+源码：
+
+frameworks/av/services/audioflinger/
+AudioPolicyService
+负责：
+
+音频路由
+
+音量策略
+
+蓝牙耳机切换
+
+源码：
+
+frameworks/av/services/audiopolicy/
+audioserver
+AOSP 8以后：
+
+AudioFlinger
+AudioPolicyService
+Media相关服务
+都运行在：
+
+audioserver
+进程内。
+
+3. 多媒体相关
+MediaPlayerService
+负责：
+
+MediaPlayer
+底层实现。
+
+源码：
+
+frameworks/av/media/libmediaplayerservice/
+CameraService
+负责：
+
+Camera HAL
+
+Camera2 API
+
+源码：
+
+frameworks/av/services/camera/libcameraservice/
+MediaCodecService
+负责：
+
+H264/H265编解码
+
+硬件Codec调度
+
+MediaExtractorService
+负责：
+
+mp4
+flv
+mkv
+aac
+等格式解析。
+
+4. 系统基础服务
+ServiceManager
+Binder世界的注册中心。
+
+所有 Binder Service 都向它注册：
+
+defaultServiceManager()
+例如：
+
+addService(...)
+源码：
+
+frameworks/native/cmds/servicemanager/
+hwservicemanager
+HIDL服务管理器。
+
+源码：
+
+system/hwservicemanager/
+vndservicemanager
+Vendor Binder服务管理器。
+
+Treble架构后新增。
+
+5. Sensor相关
+SensorService
+负责：
+
+SensorManager
+底层实现。
+
+源码：
+
+frameworks/native/services/sensorservice/
+提供：
+
+Accelerometer
+
+Gyroscope
+
+Light Sensor
+
+Proximity
+
+等传感器数据。
+
+6. 输入系统
+InputFlinger
+主要组件：
+
+InputReader
+InputDispatcher
+源码：
+
+frameworks/native/services/inputflinger/
+负责：
+
+touch
+key
+mouse
+事件分发。
+
+Framework层：
+
+InputManagerService
+调用它。
+
+7. 电源相关
+PowerManagerService(Native部分)
+Native组件：
+
+PowerHAL
+SuspendControl
+源码：
+
+frameworks/native/services/powermanager/
+
+8. 系统守护进程（Native Daemon）
+这些通常由 init 启动。
+
+init
+PID=1
+
+Android第一个用户空间进程。
+
+vold
+Volume Daemon
+
+负责：
+
+sdcard
+usb
+data分区
+挂载。
+
+netd
+Network Daemon
+
+负责：
+
+iptables
+dns
+network
+管理。
+
+installd
+负责：
+
+apk安装
+dex优化
+应用目录
+logd
+日志服务。
+
+storaged
+存储统计。
+
+keystore2
+密钥管理。
+
+apexd
+APEX模块管理。
+
+这些都属于 Native Daemon。
+
+Framework开发最常见的 Native Service
+如果你的目标是做 AOSP Framework/System开发，优先掌握下面这些：
+
+ServiceManager
+SurfaceFlinger
+InputFlinger
+SensorService
+AudioFlinger
+AudioPolicyService
+CameraService
+MediaPlayerService
+vold
+netd
+installd
+如何查看设备当前所有 Native Service
+ADB：
+
+adb shell service list
+查看 Binder Service：
+
+adb shell dumpsys -l
+查看 Native 进程：
+
+adb shell ps -A | grep server
+例如：
+
+audioserver
+cameraserver
+mediadrmserver
+surfaceflinger
+还可以查看 ServiceManager 中注册的服务：
+
+adb shell dumpsys binder_calls_stats
+或者：
+
+adb shell service list
+如果你正在学习 Android 14 Framework 层，我建议下一步重点研究这几个 Native Service 的启动流程：
+
+init
+ ↓
+servicemanager
+ ↓
+surfaceflinger
+ ↓
+zygote
+ ↓
+system_server
+ ↓
+InputFlinger
+SensorService
+AudioFlinger
+这是面试和实际系统开发中出现频率最高的一条主线。
+
+
+

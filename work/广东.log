@@ -1,0 +1,36 @@
+source build/envsetup.sh && lunch cmcc_gd-userdebug && make apk2bp
+apk2bp device/starnet/cmcc_gd/prebuilts/packages
+
+source build/envsetup.sh && lunch cmcc_gd-userdebug && make installclean && make otapackage aml_upgrade
+
+分支；mr-cmcc-gd
+
+am broadcast -a android.intent.action.askillsdk.ota -n com.ota.skillsdk/.SkillSdkOtaReceiver --es filePath "/sdcard/cmcc_gd-ota-eng.root.zip"
+
+
+device/amlogic/raman/BoardConfig.mk
+BOARD_EROFS_COMPRESSOR := lz4
+
+git stash push -u -m "广东版本临时保存"
+
+
+
+
+
+ro.config.media_vol_steps=100  
+ro.config.media_vol_default
+
+
+
+屏保分享弹出界面：com.cmcc.lingxiagent/com.cmcc.aicenter.ui.activity.share.ShareInfoPlayActivity
+com.cmcc.lingxiagent/com.cmcc.aicenter.ui.activity.share.ShareInfoPlayActivity
+
+
+
+
+咪咕视频：未预置
+console:/ $ dumpsys package cn.cmvideo.car.play | grep version
+    versionCode=380318 minSdk=19 targetSdk=29
+    versionName=3.8.3.18
+    signatures=PackageSignatures{d9d9bd8 version:2, signatures:[de2a26f4], past signatures:[]}
+console:/ $ 

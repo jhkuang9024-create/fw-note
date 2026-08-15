@@ -1,0 +1,196 @@
+certificate: "platform"
+
+dex_preopt: {
+    enabled: false,
+},
+optimize: {
+    enabled: false,
+},
+
+
+1. 系统是否还存活
+2. 是否发生anr
+3. activity是否启动成功
+
+
+git cherry-pick a1b2c3d
+
+pm install -r -d xxx.apk
+-r 覆盖安装
+-d 允许降级安装
+
+
+dumpsys package com.gitv.tv.gvp | grep version
+
+恢复出厂设置
+reboot recovery
+factory_update_param.aml文件放到U盘根目录
+
+
+am start -n cn.starnet.smd.settings/.activity.MainActivity
+am start -a cmcc.settings.action.DEVICE_SETTINGS
+
+am start -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -n tv.icntv.ott.touch/tv.icntv.ott.icntv
+
+am broadcast -a android.intent.action.askillsdk.ota -n com.ota.skillsdk/.SkillSdkOtaReceiver --es filePath "/sdcard/update.zip"
+
+
+查看某个apk中是否有某个action:
+console:/ # dumpsys package cn.starnet.smd.settings | grep DEVICE_SETTINGS
+      cmcc.settings.action.DEVICE_SETTINGS:
+          Action: "cmcc.settings.action.DEVICE_SETTINGS"
+
+
+content update --uri content://stbconfig/authentication/username --bind value:s:0099360070742080260428BEF3247A89
+
+
+解压apk内的动态库
+unzip app.apk "lib/*"
+检查
+unzip -l app.apk | grep '\.so$'
+压缩：
+zip -r xxx.zip .
+
+
+客户端(进程A)                         Binder驱动                      服务端(进程B :remote)
+─────────────                      ────────────                     ────────────────
+Proxy.calculateSum(3,5)
+  -> Parcel 写入参数
+  -> BinderProxy.transact()
+      -> BpBinder::transact()
+          -> IPCThreadState::transact()
+              write BC_TRANSACTION + handle
+              ioctl(BINDER_WRITE_READ)  ──────>
+                                                         <─────── Binder线程正在
+                                                                   joinThreadPool
+                                   驱动查找handle对应节点
+                                   挂入目标线程的读取队列
+                                   
+                                                                 <────── ioctl返回
+                                                                       BR_TRANSACTION
+                                                                 executeCommand
+                                                                   BBinder->transact
+                                                                   Stub.onTransact
+                                                                     调用calculateSum
+                                                                   write reply
+                                                                   sendReply BC_REPLY
+                                   驱动接收BC_REPLY
+              <────── ioctl返回
+                 BR_REPLY
+         reply->readInt() = 8
+  <- 返回8
+
+
+查看某个驱动模块加载是否正常：lsmod | grep -i phy
+
+
+git config user.name kuangjunhua
+git config user.email kuangjunhua@star-net.cn
+git config pull.rebase true
+git pull
+
+
+合patch
+切换到patch文件中对应的根目录后执行:
+patch -p1 < xxx.patch
+
+
+亮/灭屏
+setprop vendor.backlight on/off
+input keyevent 26
+
+
+查看磁盘空间使用情况：
+df -h 
+
+查看分辨率列表：
+cat /sys/class/amhdmitx/amhdmitx0/disp_cap
+查看当前分辨率：
+cat /sys/class/display/mode
+
+查看内存：
+dumpsys meminfo
+free -h
+cat /proc/meminfo
+top
+
+
+先 suspend（暂停）
+update_engine_client --suspend
+再 cancel
+update_engine_client --cancel
+
+
+fg 后台任务切换到前台，然后ctrl+c退出
+
+
+底座日志：
+adb pull /sdcard/Android/data/com.cmcc.jarvis/cache/logs
+
+
+root@lingxi-hwc:~/code/amlogic_s905d5_kjh# git stash list
+stash@{0}: WIP on mr-lingxiping-shandong: 6e84d967a8d 添加山东灵犀屏项目配置
+stash@{1}: WIP on patch-sichuan: 620bfcaa5df 合椰壳相位的补丁：micphase_synchronization.diff
+stash@{2}: WIP on patch-shandong: 620bfcaa5df 合椰壳相位的补丁：micphase_synchronization.diff
+stash@{3}: WIP on mr-lingxiping-shandong: 6b154146b44 添加山东灵犀屏项目配置
+stash@{4}: WIP on patch-shandong: 620bfcaa5df 合椰壳相位的补丁：micphase_synchronization.diff
+stash@{5}: WIP on patch-henan: c5bb63909be [fix][preinstall][game and cloudcomputer can't preinstall][review:none]
+查看
+stash@{5}: WIP on patch-henan: c5bb63909be [fix][preinstall][game and cloudcomputer can't preinstall][review:none]的内容：
+修改了哪些文件：
+git stash show --name-only stash@{5}
+git stash show stash@{5}
+查看完整代码改动：
+git stash show -p stash@{5}
+git show stash@{5}
+git stash show -p stash@{5} > stash5.patch
+git stash show -p stash@{1} > stash-sc.patch
+
+git stash push -u -m "包含新文件的临时保存"
+
+
+串口/adb使用先登录的配置：
+PRODUCT_SUPPORT_CONSOLE_PASSWORD
+
+开关ADB
+Settings.Global.putInt(mContext.getContentResolver(),Settings.Global.ADB_ENABLED, 1)
+settings put global adb_enabled 1
+content update --uri content://settings/global --bind name:s:adb_enabled --bind value:i:1
+
+
+扫描和本机连同一个路由器的设备ip
+终端执行ipconfig可以看到本机ip,例如：192.168.1.6,
+用本机IP的前三部分替换以下命令的192.168.1,然后依次执行下面两个命令
+for /L %i IN (1,1,254) DO ping -w 1 -n 1 192.168.1.%i
+arp -a
+找到和设备MAC相同的那一条信息中的IP就是设备的IP
+
+mac获取本机IP：
+ipconfig getifaddr en0
+依次发送一个ping包：
+for i in {1..254}; do ping -c 1 -t 1 192.168.1.$i | grep "time="; done
+查看arp缓存表：
+arp -a
+
+
+USB adb
+common/common14-5.15/common/common_drivers/arch/arm64/boot/dts/amlogic/s6_s905l5ap_bq210.dts
+
+
+查看各目录的大小并按照从大到小排序
+du -sh * |sort -hr
+
+setprop persist.logd.logpersistd logcatd  这个命令执行后，后台会一直有日志存到/data/misc/logd目录，抓的比较全
+
+
+拉起原生camera:am start -a android.media.action.VIDEO_CAPTURE
+
+
+查看提交记录: git reflog
+
+拉起应用： monkey -p 包名 1
+
+声音
+frameworks/base/services/core/java/com/android/server/DisplayService.java
+ro.config.media_vol_steps=100    定义媒体音量的最大档位数，默认是15
+ro.config.media_vol_default 定义媒体音量的默认档位值，默认是5

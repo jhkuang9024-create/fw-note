@@ -1,0 +1,11 @@
+source build/envsetup.sh && lunch cmcc_fj-userdebug && make apk2bp
+apk2bp device/starnet/cmcc_fj/prebuilts/packages
+source build/envsetup.sh && lunch cmcc_fj-userdebug && make installclean && make otapackage aml_upgrade
+
+分支；mr-cmcc-fj
+
+device/amlogic/raman/BoardConfig.mk
+BOARD_EROFS_COMPRESSOR := lz4
+
+git stash push -u -m "福建版本临时保存"
+

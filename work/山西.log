@@ -1,0 +1,55 @@
+
+source build/envsetup.sh && lunch cmcc_sx-userdebug && make apk2bp
+apk2bp device/starnet/cmcc_sx/prebuilts/packages
+
+source build/envsetup.sh && lunch cmcc_sx-userdebug && make installclean && make aml_upgrade otapackage
+source build/envsetup.sh && lunch cmcc_sx-userdebug && make installclean && make otapackage
+
+序列号1664011529111132090000065
+
+鉴权中间件
+am start -n com.cmhi.softmbh/com.cmhi.softmbh.activitys.MainActivity
+启动移动高清
+am start -n com.gitv.tv.gvp/.activity.WelcomeActivity
+
+
+升级后启动时弹框选择AJLauncher和Launcher
+dumpsys activity top | grep ACTIVITY
+  ACTIVITY android/com.android.internal.app.ResolverActivity dff46f8 pid=1014 userId=0 uid=1000 displayId=0(type=INTERNAL)
+TB712:/ #
+
+# 方法1：设置 CMCC 特定的属性
+adb shell setprop persist.sys.launcher com.komect.ajlauncher
+wen t
+# 方法2：设置 factory 属性
+adb shell setprop ro.sys.factory.pkgName com.komect.ajlauncher
+adb shell setprop ro.sys.factory.className com.komect.ajlauncher.SplashActivity
+到方法二成功的
+
+
+su
+logcat -c
+logcat > /data/collect_1.log &
+
+
+su
+logcat > /data/start_2202 &
+
+
+pdm.cli set work_mode 1
+
+
+上层公共 API	frameworks/base/core/java/android/hardware/display/	包含 DisplayManager 和 DisplayManagerGlobal 等类，是应用开发者最常接触的显示管理接口。
+系统服务层	frameworks/base/services/core/java/com/android/server/display/	这是显示管理的核心服务 DisplayManagerService 所在位置，负责所有显示设备的全局生命周期管理。
+原生图形引擎	frameworks/native/services/surfaceflinger/	SurfaceFlinger，Android 显示系统的底层核心，是一个用 C++ 编写的系统服务，负责合成所有应用窗口的图层并输出到屏幕。
+车载显示服务	packages/services/Car/evs/ (示例)	用于车载场景，例如 IAutomotiveDisplayProxyService 相关的辅助服务和实现。
+
+
+
+
+BusyBox:
+https://busybox.net/
+
+U-Boot:
+https://github.com/u-boot/u-boot
+
