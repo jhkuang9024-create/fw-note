@@ -88,6 +88,7 @@ git config user.name kuangjunhua
 git config user.email kuangjunhua@star-net.cn
 git config pull.rebase true
 git pull
+合某次提交：git cherry-pick dab2161b0c437f71aee2eb8f9b8f9613a2f84978
 
 
 合patch
@@ -194,3 +195,12 @@ setprop persist.logd.logpersistd logcatd  这个命令执行后，后台会一�
 frameworks/base/services/core/java/com/android/server/DisplayService.java
 ro.config.media_vol_steps=100    定义媒体音量的最大档位数，默认是15
 ro.config.media_vol_default 定义媒体音量的默认档位值，默认是5
+
+查看CPU架构：
+使用 uname -m 命令 (推荐)这是最常用且直接的方法，它会显示设备内核的架构。
+执行以下命令：uname -m
+解读输出：
+输出 aarch64 表示设备是 64位 的 ARM 架构。
+输出 armv7l 表示设备是 32位 的 ARM 架构。
+输出 x86_64 表示设备是 64位 的 x86 架构。
+输出 i386 或 i686 表示设备是 32位 的 x86 架构。

@@ -1,8 +1,8 @@
 root/star@Yk8
 
-
 串口账号root
 密码是star@Yk8
+deviceId=592481
 
 # 禁止内核日志输出
 echo 0 > /proc/sys/kernel/printk
@@ -97,7 +97,3 @@ logcat > /data/player_margin_3.log &
     1. 排查手机分享图片后中屏不展示的问题，底座问题
     2. 处理出厂音量太低的问题，处理中
     3. 处理没有自动开机问题，以抓取日志给晶晨分析
-
-
-su
-logcat > /data/power_on.log &

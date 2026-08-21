@@ -14,11 +14,13 @@ BOARD_EROFS_COMPRESSOR := lz4
 git stash push -u -m "广东版本临时保存"
 
 
-
-
-
 ro.config.media_vol_steps=100  
 ro.config.media_vol_default
+
+
+su
+logcat > /data/local_play_error_1.log &
+
 
 
 
@@ -34,3 +36,5 @@ console:/ $ dumpsys package cn.cmvideo.car.play | grep version
     versionName=3.8.3.18
     signatures=PackageSignatures{d9d9bd8 version:2, signatures:[de2a26f4], past signatures:[]}
 console:/ $ 
+
+git cherry-pick dab2161b0c437f71aee2eb8f9b8f9613a2f84978
