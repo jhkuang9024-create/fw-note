@@ -158,4 +158,27 @@ mmm frameworks/base/services
 
 开关屏声音问题。Item 60/87
 蓝牙回连慢、立即使用语音无响应的问题。Item 28
-蓝牙语音无响应问题。Item 94
+蓝牙连接后有3次提醒 Item 10
+Item 15 设备接入HDMI后，播放本地中的解码视频、移动高清内播放直播、点播时未展示默认图片 验证情况：直播、点播、本地视频中屏有展示默认图片
+
+
+am: support dual screen app display. [1/1]
+
+PD#IPTV-27674
+
+Problem:
+mid tv function docking.
+
+Solution:
+support dual screen app display.
+
+Verify:
+S905L3AP
+
+Change-Id: Ie32bc945298f46eb1a6fd9cb5d63e0b36af28aec
+Signed-off-by: Xy Ding <xy.ding@amlogic.com>
+Signed-off-by: chunlong.du <chunlong.du@amlogic.com>
+
+1. 添加接口处理获取/修改声音输出
+2. 处理亮屏慢的问题，熄屏后、亮屏前有声音输出的问题
+3. 协助晶晨处理问题
