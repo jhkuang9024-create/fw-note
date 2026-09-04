@@ -129,3 +129,8 @@ cd bootloader/uboot-repo/
   }
 }
 starnet-176cedd2-da86-4d7f-b97f-daa9acfe5095
+
+
+串口/adb要登陆：
+device/amlogic/raman/raman.mk
+PRODUCT_SUPPORT_CONSOLE_PASSWORD := true

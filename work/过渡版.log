@@ -26,6 +26,9 @@ echo 111132090000004 > write
 echo prd_date > name
 echo 20260813 > write
 
+logcat | grep -iE "start u0|Displayed"
+kill $(pidof cm.komect.aqb.android.cloudcomputerpad)    进程在时执行
+
 
 console:/ # cd /sys/class/unifykeys/                                           
 console:/sys/class/unifykeys # ls
@@ -63,8 +66,6 @@ endif
 
 isUserSetupComplete()
 
-su
-logcat > /data/start_install_002.log &
 
 广东灵犀管家安装失败原因安装失败的原因：ContentProvider 冲突
 在/system/app/AiAreaHost/AiAreaHost.apk=com.iflytek.aiarea已经有com.iflytek.aiareahome中的provider
@@ -84,16 +85,77 @@ mPowerManager.goToSleep(SystemClock.uptimeMillis(),PowerManager.GO_TO_SLEEP_REAS
 声音输出：vendor.audio.hdmioutput
 
 
-su
-logcat > /data/player_margin_3.log &
-
-
 播放视频左右黑色边框：vendor/amlogic/common/apps/TvInput/DroidLogicTvInput/src/com/droidlogic/tvinput/settings/SettingsManager.java
 
 
+软键盘反馈声音
+frameworks/base/core/res/res/values/config.xml
+<integer name="config_soundEffectVolumeDb">-18</integer>
 
-处理完成过渡版问题：投屏问题、播放本地视频相关的问题、切换声音输出、熄屏拉起桌面、播放视频黑色边框问题、合适配讯飞合性能优化的patch
-广东中屏：
-    1. 排查手机分享图片后中屏不展示的问题，底座问题
-    2. 处理出厂音量太低的问题，处理中
-    3. 处理没有自动开机问题，以抓取日志给晶晨分析
+
+长按电源键时间
+device/amlogic/p291_iptv/overlay_chinamobile_sd/frameworks/base/core/res/res/values/config.xml
+<integer name="config_veryLongPressTimeout">2000</integer>
+device/amlogic/p291_iptv/overlay_t249/frameworks/base/core/res/res/values/config.xml
+<integer name="config_veryLongPressTimeout">2000</integer>
+frameworks/base/core/res/res/values/config.xml
+<integer name="config_veryLongPressTimeout">2000</integer>
+
+
+移动云盘：com.chinamobile.mcloudtv2
+
+08-27 09:55:59.862  3843  4384 I ActivityManager: START u0 {flg=0x10000000 pkg=com.chinamobile.mcloudtv2 cmp=com.chinamobile.mcloudtv2/com.chinamobile.caiyun.activity.CaiYunMainActivity} from uid 1000
+08-27 09:56:03.503  3843  3903 I ActivityManager: Displayed com.chinamobile.mcloudtv2/com.chinamobile.caiyun.activity.CaiYunMainActivity: +3s581ms
+
+
+08-28 16:53:38.511  3880  3999 D WindowManager: interceptKeyTq keycode=26 interactive=false keyguardActive=false policyFlags=2000000 eventflags=8
+08-28 16:53:41.373  3398  3455 D MesonHwc: Display (0) ask for refresh.
+08-28 16:53:41.373  3398  3455 D MesonHwc: screenMutedThread, refresh
+1.373 + 1.489 = 2.862
+
+08-28 18:04:34.226  3876  3995 D WindowManager: interceptKeyTq keycode=26 interactive=false keyguardActive=false policyFlags=2000000 eventflags=8
+08-28 18:04:35.370  3393  3419 D MesonHwc: Display (0) ask for refresh.
+08-28 18:04:35.370  3393  3419 D MesonHwc: screenMutedThread, refresh
+0.37 + 0.774 = 1.144
+
+1.718
+
+
+熄屏未静音：
+hardware/amlogic/audio/audio_hal/amlAudioMixer.c
+frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
+
+按电源亮屏慢：
+hardware/amlogic/hwcomposer/hwc2/Hwc2Display.cpp
+vendor/amlogic/common/frameworks/services/systemcontrol/DisplayMode.cpp
+
+
+
+source build/envsetup.sh
+lunch p291_iptv-userdebug
+export OEM_TARGET=p291_tb611
+export STARNET_ENABLE=true
+
+编译audio.primary.amlogic
+make audio.primary.amlogic
+vendor/lib/hw/audio.primary.amlogic.so
+
+编译services
+mmm frameworks/base/services
+/system/framework/services.jar
+/system/framework/oat/arm/services.odex
+/system/framework/oat/arm/services.vdex
+
+
+1. 设置-本机信息没有文件管理(Item 95)
+2. 拔掉HDMI电视没声音(Item 93)
+3. 移动云盘启动蓝屏、启动慢问题
+4. 蓝牙遥控器断连问题（连上遥控器验证了20分钟不操作没断连）
+
+09-03 15:01:14.118  3723 21038 I ActivityManager: START u0 {cat=[android.intent.category.LAUNCHER] flg=0x10000000 pkg=cm.komect.aqb.android.cloudcomputerpad cmp=cm.komect.aqb.android.cloudcomputerpad/cm.komect.aqb.android.main.page.mainpage.MainActivity (has extras)} from uid 1000
+09-03 15:01:16.411  3723  3949 I ActivityManager: Displayed cm.komect.aqb.android.cloudcomputerpad/cm.komect.aqb.android.main.page.authorization.AuthorityActivity: +178ms (total +2s404ms)
+
+
+开关屏声音问题。Item 60/87
+蓝牙回连慢、立即使用语音无响应的问题。Item 28
+蓝牙语音无响应问题。Item 94
