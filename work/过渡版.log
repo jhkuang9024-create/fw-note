@@ -2,7 +2,9 @@ root/star@Yk8
 
 串口账号root
 密码是star@Yk8
-deviceId=592481
+deviceId=592579
+
+重新绑定需要清一下token: echo "" > /mnt/vendor/param/connectToken_persist
 
 # 禁止内核日志输出
 echo 0 > /proc/sys/kernel/printk
@@ -146,6 +148,10 @@ mmm frameworks/base/services
 /system/framework/oat/arm/services.odex
 /system/framework/oat/arm/services.vdex
 
+单编pdm
+cd vendor/starnet/pdm
+mm pdm-service pdm.cli -j8 2>&1 | tee /tmp/mm_pdm.log
+
 
 1. 设置-本机信息没有文件管理(Item 95)
 2. 拔掉HDMI电视没声音(Item 93)
@@ -182,3 +188,161 @@ Signed-off-by: chunlong.du <chunlong.du@amlogic.com>
 1. 添加接口处理获取/修改声音输出
 2. 处理亮屏慢的问题，熄屏后、亮屏前有声音输出的问题
 3. 协助晶晨处理问题
+
+PhoneWindowManager中设置参数控制声音
+PhoneWindowManager.goToSleep()              ── 第 2767 行，按键处理线程(system_server 主线程)
+ └─ AudioManager.setParameters()            ── 纯 Java，不过 AudioService
+     └─ AudioSystem.setParameters()         ── native 方法声明(Java)
+         └─ JNI android_media_AudioSystem_setParameters()
+             └─ AudioSystem::setParameters()        // libaudioclient(C++)
+                 └─ BpAudioFlinger::setParameters() // binder IPC → audioserver 进程
+                     └─ AudioFlinger::setParameters()// 服务端，ioHandle=0 → 全局分支
+                         └─ for mAudioHwDevs: dev->setParameters()   // 持 mLock/mHardwareLock
+                             └─ 适配层(audio HAL 接口实现)
+                                 └─ audio_hw_device.set_parameters(dev, "TV-Mute=1")
+                                     └─ adev_set_parameters()   // audio_hw.c:5665
+                                         └─ TV-Mute 解析分支      // audio_hw.c:6561-6568
+                                             └─ 写入三个标志，实际静音由各写路径线程在下一轮循环轮询标志时体现
+                                                 └─ mixer_output_write  amlAudioMixer.c:466-477
+                                                     └─ submixer 线程丢弃 ALSA ring 内已缓存音频, 消除残余声音
+                                                     └─ 主混音器 aml_hw_mixer.c:169（memset）重置
+
+
+
+产品ID：592579
+TUI/TAC：11113571
+产品验证码(productToken)：HwT7D0nq4nLAKlrq
+
+
+if (mAudioManager == null) {
+    mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+}
+mAudioManager.setParameters("TV-Mute=0");
+
+
+
+过渡版实现通过命令行修改设备信息、key、token等业务信息
+
+ro.product.cmcc_productToken/ro.product.cmcc_token/productToken=HwT7D0nq4nLAKlrq
+ro.product.cmcc_andlinkToken/ro.product.cmcc_andlinktoken/andlinkToken=iZgH5qNX11ooEYj5
+appKey=l8f67gw6sub2iyjx
+appSecret=s4n6mxfspzn1i7ac
+
+common/arch/arm/boot/dts/amlogic/keyman_gxlx.dtsi 增加索引26~29的节点
+device/amlogic/p291_iptv/vendor_prop_sdmobile.mk 去掉需要修改的几个ro属性
+system/core/init/property_service.cpp 允许动态修改白名单中的ro属性 PropertySet方法
+
+
+
+712信息
+ro.product.cmcc_imsAppId=utoknf5k5t5qatav
+ro.product.cmcc_imsSecret=t1vffb9xl5pn8xrq
+ro.product.cmcc_productToken=N1EDEKelp9EeSUmF
+ro.product.cmcc_token=N1EDEKelp9EeSUmF
+ro.product.cmcc_andlinkToken=1yppKcK7I5R0Td77
+ro.product.cmcc_andlinktoken=1yppKcK7I5R0Td77
+
+
+软件版本信息
+setprop persist.ro.white_list.enable 1
+pdm.cli set device_id 592288
+pdm.cli set product_token N1EDEKelp9EeSUmF
+pdm.cli set andlink_token 1yppKcK7I5R0Td77
+pdm.cli set manufacturer STAR
+pdm.cli set brand STAR-NET
+pdm.cli set model TB712
+pdm.cli set device TB712
+pdm.cli set cmcc_brand STAR-NET
+pdm.cli set cmcc_ims_app_id utoknf5k5t5qatav
+pdm.cli set cmcc_ims_secret t1vffb9xl5pn8xrq
+
+pdm.cli set stbid 0099360070742080260428BEF3247A81
+pdm.cli set mac 28:BE:F3:24:7A:81
+pdm.cli set mac_wifi 28:BE:F3:24:7A:81
+pdm.cli set sn 1664011529111132090000010
+pdm.cli set cmccpwd 25d3f5fa16e9
+pdm.cli set cmei 111132090000010
+
+设备信息, 将xxx替换成真实的设备信息字段值
+pdm.cli set stbid xxx
+pdm.cli set mac xxx
+pdm.cli set mac_wifi xxx
+pdm.cli set sn xxx
+pdm.cli set cmccpwd xxx
+pdm.cli set cmei xxx
+
+
+console:/mnt/vendor/param # ls -l
+drwx------ 2 root root 16384 2026-09-10 10:28 lost+found
+drwxrwx--x 2 root root  4096 2026-09-10 10:28 pq
+console:/mnt/vendor/param # cd /
+console:/ # pdm.cli set mode 1
+Success: set mode=1
+console:/ # cd /mnt/vendor/param
+console:/mnt/vendor/param # ls -l
+drwx------ 2 root root 16384 2026-09-10 10:28 lost+found
+drwxrwx--x 2 root root  4096 2026-09-10 10:28 pq
+-rw------- 1 root root     2 2026-09-10 10:37 usermode
+
+
+HIDL版pdm
+1:device/amlogic/common/sepolicy.mk
+# 星网 pdm-hidl(绑定式 HIDL 版 unifykey 服务, 见 vendor/starnet/pdm-hidl/README.md)
+# ⚠️ 必须写在这个 board-config 阶段的文件里:实测把该目录 append 到
+#    vendor/starnet/starnet.mk(旧的 vendor/starnet/pdm/sepolicy 就是那么写的)不生效,
+#    编译出的 vendor/etc/selinux/vendor_sepolicy.cil 里既没有 pdm_service、
+#    也没有 pdm_hidl_default(而这里的 tvserver/system_control 都在)。
+BOARD_SEPOLICY_DIRS += \
+    vendor/starnet/pdm-hidl/sepolicy
+
+2:vendor/starnet/starnet.mk
+include vendor/starnet/pdm-hidl/pdm-hidl.mk
+
+3:device/amlogic/p291_iptv/BoardConfig.mk
+# pdm-hidl(绑定式 HIDL 版 unifykey 服务)的 VINTF 清单片段。
+# DEVICE_MANIFEST_FILE 支持多个文件(build/make/target/board/Android.mk:35),
+# 由 assemble_vintf 与上面的板级 manifest 合并成 /vendor/etc/vintf/manifest.xml;
+# 详见 vendor/starnet/pdm-hidl/README.md 第 6 节。
+# ⚠️ 必须放在 AUTO_PATCH_AB / AUTO_PATCH_NPU 之后:那两个脚本会 sed -i 就地修改
+#    $(DEVICE_MANIFEST_FILE) 里的每个文件,放在前面会被它们一并处理。
+DEVICE_MANIFEST_FILE += vendor/starnet/pdm-hidl/manifest/vendor.starnet.pdm@1.0.xml
+
+logcat -v time --pid $(pidof com.cmcc.jarvis)
+
+
+
+./migrate_push.sh --dry-run                 # 先看会提交/推什么
+./migrate_push.sh --exec                    # 确认无误再执行
+./migrate_push.sh --dry-run --only common frameworks/base   # 也可只挑几个
+
+
+
+看设备使用使用的是那个dts(有多个版本的场景，uboot启动阶段根据boardid选)
+adb shell cat /proc/device-tree/amlogic-dt-id     # 期望 sm1_t249v4_2g
+adb shell cat /sys/firmware/devicetree/base/amlogic-dt-id
+
+echo dump >/sys/class/lcd/debug
+cat /sys/class/aml_bl/status
+
+dmesg -C
+echo dump >/sys/class/lcd/debug
+dmesg
+
+
+Item: 17\40
+
+
+恢复出厂设置
+# 清理旧命令并写入新命令
+rm -f /cache/recovery/command
+echo "--wipe_data" > /cache/recovery/command
+echo "--wipe_cache" >> /cache/recovery/command
+sync
+sleep 1
+sync
+# 重启进入 recovery 执行擦除
+reboot recovery
+
+
+24、25: 音量加减
+139:禁麦键

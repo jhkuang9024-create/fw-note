@@ -1,0 +1,52 @@
+1. hidl-gen 工具本体
+可执行文件：out/soong/host/linux-x86/bin/hidl-gen（3.7MB，宿主机 x86_64 版）
+源码：system/tools/hidl/（参考编译中间件在 out/soong/.intermediates/system/tools/hidl/，含 libhidl-gen / libhidl-gen-ast / libhidl-gen-utils）
+2. hidl-gen 生成的代码（你要找的核心）
+都在 out/soong/.intermediates/vendor/starnet/pdm-hidl/interfaces/pdm/1.0/ 下，分两个 genrule 模块：
+
+C++ 实现（-Lc++-sources） → vendor.starnet.pdm@1.0_genc++/gen/vendor/starnet/pdm/1.0/
+
+PdmAll.cpp（37KB，收发桩 + HIDL_FETCH_IPdm 注册）
+types.cpp、PdmAll.cpp.d
+头文件（-Lc++-headers） → vendor.starnet.pdm@1.0_genc++_headers/gen/vendor/starnet/pdm/1.0/
+
+IPdm.h（#include <vendor/starnet/pdm/1.0/IPdm.h> 实际解析到这里）
+BsPdm.h（服务端）、BpHwPdm.h/BnHwPdm.h/IHwPdm.h（passthrough 模式的 hw 结构）
+types.h、hwtypes.h
+对应的 ninja 命令行（可照抄手跑）在 out/soong/build.ninja:1586730：
+
+
+out/soong/host/linux-x86/bin/hidl-gen -o <outdir> -Lc++-sources \
+  -randroid.hidl:system/libhidl/transport \
+  -rvendor.starnet:vendor/starnet/pdm-hidl/interfaces \
+  vendor.starnet.pdm@1.0
+这条 genrule 外面还套了 sbox 沙箱（--sandbox-path out/soong/.temp），所以生成过程是隔离执行的，但落地路径就是上面那两处。
+
+3. 编译中间产物（.o / .a / .so）
+每个变体目录下的 obj/ 会按源码相对路径镜像一份 obj 目录：
+
+out/soong/.intermediates/vendor/starnet/pdm-hidl/... 结构：
+
+内容	路径
+接口 .o	interfaces/pdm/1.0/vendor.starnet.pdm@1.0/android_arm_armv7-a-neon_cortex-a9_{core,vendor}_{static,shared}/obj/.../vendor.starnet.pdm@1.0_genc++/gen/vendor/starnet/pdm/1.0/{PdmAll.o,types.o}
+接口 .so/.a	.../android_arm_armv7-a-neon_cortex-a9_{core,vendor}_{shared,static}/vendor.starnet.pdm@1.0.{so,a}
+服务端 .o	service/vendor.starnet.pdm@1.0-service/.../obj/vendor/starnet/pdm-hidl/service/{main,Lock,PdmHal}.o
+CLI .o / 二进制	cli/pdm.hidl.cli/.../obj/vendor/starnet/pdm-hidl/cli/main.o、.../android_arm_armv7-a-neon_cortex-a9_core/pdm.hidl.cli
+编译时用到的 include 路径（build.ninja:1586130）里明确带上了：
+
+
+-Iout/soong/.intermediates/vendor/starnet/pdm-hidl/interfaces/pdm/1.0/vendor.starnet.pdm@1.0_genc++/gen
+-Iout/soong/.intermediates/vendor/starnet/pdm-hidl/interfaces/pdm/1.0/vendor.starnet.pdm@1.0_genc++_headers/gen
+4. 最终落地产物（out/target/product/p291_iptv/）
+vendor/lib/vendor.starnet.pdm@1.0.so — vendor 侧 .so
+system/lib/vendor.starnet.pdm@1.0.so — system 侧 .so（vendor_available 带来的双份）
+vendor/bin/hw/vendor.starnet.pdm@1.0-service — HAL 服务
+system/bin/pdm.hidl.cli — CLI
+另外还有一套 Make/kati 风格的旧式镜像目录（kati 阶段的 install 中间件，不是 hidl-gen 直接产出，但排查时容易混）：
+
+out/target/product/p291_iptv/obj/SHARED_LIBRARIES/vendor.starnet.pdm@1.0{,.vendor}_intermediates/（含 .so、.so.debug、.so.dynsyms、mini_debuginfo.xz）
+out/target/product/p291_iptv/obj/EXECUTABLES/{vendor.starnet.pdm@1.0-service,pdm.hidl.cli}_intermediates/
+5. 重生成 / 排错
+只清这个模块的中间件：rm -rf out/soong/.intermediates/vendor/starnet/pdm-hidl，然后 m vendor.starnet.pdm@1.0-service（顶层 shell 里是 ./tb611_s905L3ap_p291.sh 那套）
+想直接看生成代码而不重新编整个树：直接跑上面那条 hidl-gen 命令，把 -o /tmp/pdmgen 指向临时目录即可
+改 .hal 后必须同步改 Android.bp:15-18 的 types: 列表，否则 hidl-gen 生成的 types.cpp 里枚举/结构体序列化会缺项，报链接错误
