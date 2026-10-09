@@ -158,7 +158,7 @@ Settings.Global.putInt(mContext.getContentResolver(),Settings.Global.ADB_ENABLED
 settings put global adb_enabled 1
 content update --uri content://settings/global --bind name:s:adb_enabled --bind value:i:1
 
-
+window获取IP：
 扫描和本机连同一个路由器的设备ip
 终端执行ipconfig可以看到本机ip,例如：192.168.1.6,
 用本机IP的前三部分替换以下命令的192.168.1,然后依次执行下面两个命令
@@ -166,7 +166,7 @@ for /L %i IN (1,1,254) DO ping -w 1 -n 1 192.168.1.%i
 arp -a
 找到和设备MAC相同的那一条信息中的IP就是设备的IP
 
-mac获取本机IP：
+mac获取IP：
 ipconfig getifaddr en0
 依次发送一个ping包：
 for i in {1..254}; do ping -c 1 -t 1 192.168.1.$i | grep "time="; done

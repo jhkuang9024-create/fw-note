@@ -4,7 +4,32 @@ root/star@Yk8
 密码是star@Yk8
 deviceId=592579
 
+ssh -p 32796 kuangjunhua@192.168.0.75
+
+星网锐捷灵犀屏TB612
+产品ID：592579
+TUI/TAC：11113571
+产品验证码(productToken)：HwT7D0nq4nLAKlrq
+平台验证码(andlinkToken)：iZgH5qNX11ooEYj5
+AppKey:l8f67gw6sub2iyjx
+AppSecret:s4n6mxfspzn1i7ac
+
+
+语音能力集成：
+AppKey:670def8bdd533be273711e05bb8035de
+AppSecret:59571ed07a3c0695a088c915ce94f05f
+
 重新绑定需要清一下token: echo "" > /mnt/vendor/param/connectToken_persist
+恢复出厂设置：连续按 音量加、音量减、禁麦、音量减、音量加 触发
+
+开adb:
+1. 音量+禁麦
+2. factoryTest/adb_enabled.xml
+3.长按禁麦和静音键
+
+分支：aml/android-9.0.0_r3/mtv/2026
+
+U盘adb: bootloader/uboot-repo/bl33/board/amlogic/configs/sm1_t239_v1.h:117: "otg_device=1\0"\
 
 # 禁止内核日志输出
 echo 0 > /proc/sys/kernel/printk
@@ -149,8 +174,7 @@ mmm frameworks/base/services
 /system/framework/oat/arm/services.vdex
 
 单编pdm
-cd vendor/starnet/pdm
-mm pdm-service pdm.cli -j8 2>&1 | tee /tmp/mm_pdm.log
+ro属性设置开关：persist.ro.white_list.enable
 
 
 1. 设置-本机信息没有文件管理(Item 95)
@@ -234,82 +258,6 @@ system/core/init/property_service.cpp 允许动态修改白名单中的ro属性 
 
 
 
-712信息
-ro.product.cmcc_imsAppId=utoknf5k5t5qatav
-ro.product.cmcc_imsSecret=t1vffb9xl5pn8xrq
-ro.product.cmcc_productToken=N1EDEKelp9EeSUmF
-ro.product.cmcc_token=N1EDEKelp9EeSUmF
-ro.product.cmcc_andlinkToken=1yppKcK7I5R0Td77
-ro.product.cmcc_andlinktoken=1yppKcK7I5R0Td77
-
-
-软件版本信息
-setprop persist.ro.white_list.enable 1
-pdm.cli set device_id 592288
-pdm.cli set product_token N1EDEKelp9EeSUmF
-pdm.cli set andlink_token 1yppKcK7I5R0Td77
-pdm.cli set manufacturer STAR
-pdm.cli set brand STAR-NET
-pdm.cli set model TB712
-pdm.cli set device TB712
-pdm.cli set cmcc_brand STAR-NET
-pdm.cli set cmcc_ims_app_id utoknf5k5t5qatav
-pdm.cli set cmcc_ims_secret t1vffb9xl5pn8xrq
-
-pdm.cli set stbid 0099360070742080260428BEF3247A81
-pdm.cli set mac 28:BE:F3:24:7A:81
-pdm.cli set mac_wifi 28:BE:F3:24:7A:81
-pdm.cli set sn 1664011529111132090000010
-pdm.cli set cmccpwd 25d3f5fa16e9
-pdm.cli set cmei 111132090000010
-
-设备信息, 将xxx替换成真实的设备信息字段值
-pdm.cli set stbid xxx
-pdm.cli set mac xxx
-pdm.cli set mac_wifi xxx
-pdm.cli set sn xxx
-pdm.cli set cmccpwd xxx
-pdm.cli set cmei xxx
-
-
-console:/mnt/vendor/param # ls -l
-drwx------ 2 root root 16384 2026-09-10 10:28 lost+found
-drwxrwx--x 2 root root  4096 2026-09-10 10:28 pq
-console:/mnt/vendor/param # cd /
-console:/ # pdm.cli set mode 1
-Success: set mode=1
-console:/ # cd /mnt/vendor/param
-console:/mnt/vendor/param # ls -l
-drwx------ 2 root root 16384 2026-09-10 10:28 lost+found
-drwxrwx--x 2 root root  4096 2026-09-10 10:28 pq
--rw------- 1 root root     2 2026-09-10 10:37 usermode
-
-
-HIDL版pdm
-1:device/amlogic/common/sepolicy.mk
-# 星网 pdm-hidl(绑定式 HIDL 版 unifykey 服务, 见 vendor/starnet/pdm-hidl/README.md)
-# ⚠️ 必须写在这个 board-config 阶段的文件里:实测把该目录 append 到
-#    vendor/starnet/starnet.mk(旧的 vendor/starnet/pdm/sepolicy 就是那么写的)不生效,
-#    编译出的 vendor/etc/selinux/vendor_sepolicy.cil 里既没有 pdm_service、
-#    也没有 pdm_hidl_default(而这里的 tvserver/system_control 都在)。
-BOARD_SEPOLICY_DIRS += \
-    vendor/starnet/pdm-hidl/sepolicy
-
-2:vendor/starnet/starnet.mk
-include vendor/starnet/pdm-hidl/pdm-hidl.mk
-
-3:device/amlogic/p291_iptv/BoardConfig.mk
-# pdm-hidl(绑定式 HIDL 版 unifykey 服务)的 VINTF 清单片段。
-# DEVICE_MANIFEST_FILE 支持多个文件(build/make/target/board/Android.mk:35),
-# 由 assemble_vintf 与上面的板级 manifest 合并成 /vendor/etc/vintf/manifest.xml;
-# 详见 vendor/starnet/pdm-hidl/README.md 第 6 节。
-# ⚠️ 必须放在 AUTO_PATCH_AB / AUTO_PATCH_NPU 之后:那两个脚本会 sed -i 就地修改
-#    $(DEVICE_MANIFEST_FILE) 里的每个文件,放在前面会被它们一并处理。
-DEVICE_MANIFEST_FILE += vendor/starnet/pdm-hidl/manifest/vendor.starnet.pdm@1.0.xml
-
-logcat -v time --pid $(pidof com.cmcc.jarvis)
-
-
 
 ./migrate_push.sh --dry-run                 # 先看会提交/推什么
 ./migrate_push.sh --exec                    # 确认无误再执行
@@ -346,3 +294,98 @@ reboot recovery
 
 24、25: 音量加减
 139:禁麦键
+
+
+612信息
+设备信息
+pdm.cli set stbid 0099360080742080260990848E81E4B1
+pdm.cli set mac 90:84:8E:81:E4:B1
+pdm.cli set mac_wifi 90:84:8E:81:E4:B0
+pdm.cli set sn 1664011529111135710000007
+pdm.cli set cmccpwd fe4446a5086b
+pdm.cli set cmei 111135710000007
+版本信息
+pdm.cli set device_id 592579
+pdm.cli set product_token HwT7D0nq4nLAKlrq
+pdm.cli set andlink_token iZgH5qNX11ooEYj5
+pdm.cli set manufacturer STAR
+pdm.cli set brand STAR-NET
+pdm.cli set model TB612
+pdm.cli set device TB612
+pdm.cli set cmcc_brand STAR-NET
+pdm.cli set cmcc_ims_app_id l8f67gw6sub2iyjx
+pdm.cli set cmcc_ims_secret s4n6mxfspzn1i7ac
+
+pdm.cli set stbid reset
+pdm.cli set mac reset
+pdm.cli set mac_wifi reset
+pdm.cli set sn reset
+pdm.cli set cmccpwd reset
+pdm.cli set cmei reset
+
+
+prebuilts/build-tools/linux-x86/bin/ninja \
+    -f out/combined-p291_iptv.ninja \
+    services
+
+默认开
+关 setprop persist.adb.pwd.enable 0
+
+adb 安装应用
+setprop persist.adb.install.enable 1
+
+
+模块（APK/服务）层面用的是 vendor/p291_tb611/iFlytek/ 那一套；但 PRODUCT_COPY_FILES 层面两套都被继承，同名目的路径以 device 那套为准 —— 最终镜像是个混合体。
+
+
+repo init -u http://git.starnetuc.info:8929/cm-pdt/manifest -b main \
+          -m amlogic/odm/android-9.0.0_r3/mtv/2026/default.xml
+repo sync -j8
+
+
+移动智话：com.cmhi.universalapp.aiotel
+
+
+echo "" > /mnt/vendor/param/connectToken_persist
+settings put global com.cmcc.jarvis.token ""
+
+
+写新设备信息后无法扫码绑定
+adb shell rm -f /mnt/vendor/param/connectToken_persist
+adb shell settings delete global com.cmcc.jarvis.token
+adb shell rm -f /data/data/com.cmcc.jarvis/shared_prefs/env_keep.xml \
+                 /data/data/com.cmcc.jarvis/shared_prefs/env_user.xml
+adb shell am force-stop com.cmcc.jarvis
+adb reboot
+
+
+updater.cli --apply_url http://192.168.0.80:32789/s905l3ap-2609211558/out/target/product/p291_iptv/update_sys_s905l3ap_tb611.zip --progress --reboot
+
+
+content call --uri content://com.cmcc.jarvis.permissionprovider --method getCecStatus
+
+编译uboot
+cd ~/s905l3ap-2609211558/bootloader/uboot-repo
+export PATH=/opt/gcc-linaro-aarch64-none-elf-4.8-2013.11_linux/bin:/opt/Sourcery_G++_Lite/bin:$PATH
+./mk sm1_t249_v1 --systemroot
+
+cp bootloader/uboot-repo/build/u-boot.bin        device/amlogic/p291_iptv/bootloader_t249/bootloader.img
+cp bootloader/uboot-repo/build/u-boot.bin.sd.bin device/amlogic/p291_iptv/upgrade_t249/u-boot.bin.sd.bin
+cp bootloader/uboot-repo/build/u-boot.bin.usb.bl2 device/amlogic/p291_iptv/upgrade_t249/u-boot.bin.usb.bl2
+cp bootloader/uboot-repo/build/u-boot.bin.usb.tpl device/amlogic/p291_iptv/upgrade_t249/u-boot.bin.usb.tpl
+
+
+禁麦
+settings put global lingxi_stop_mic 0
+
+vendor.backlight
+
+
+cmd package query-services -a com.cmcc.lingxiagent.action.ASR_SERVICE
+
+TODO
+http://git.starnetuc.info:8929/cm-pdt/vendor_starnet repo仓库分支待改成 aml/android-9.0.0_r3/mtv/2026
+http://git.starnetuc.info:8929/cm-pdt/aosp_platform_frameworks_base
+http://git.starnetuc.info:8929/cm-pdt/vendor_amlogic_hardware_amlogic_audio
+http://git.starnetuc.info:8929/cm-pdt/vendor_amlogic_hardware_amlogic_hwcomposer
+http://git.starnetuc.info:8929/cm-pdt/vendor_amlogic_device_amlogic-o   远程有新的提交（有问题、未合到本地）
