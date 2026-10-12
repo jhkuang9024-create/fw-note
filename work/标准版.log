@@ -1,187 +1,407 @@
+root/star@Yk8
+
+串口账号root
+密码是star@Yk8
+deviceId=592579
+
+ssh -p 32796 kuangjunhua@192.168.0.75
+
+星网锐捷灵犀屏TB612
+产品ID：592579
+TUI/TAC：11113571
+产品验证码(productToken)：HwT7D0nq4nLAKlrq
+平台验证码(andlinkToken)：iZgH5qNX11ooEYj5
+AppKey:l8f67gw6sub2iyjx
+AppSecret:s4n6mxfspzn1i7ac
 
 
-root/*#@Pbx@#*
-ost 75p
-    HostName 192.168.0.75
-    User root
-    Port 21022
+语音能力集成：
+AppKey:670def8bdd533be273711e05bb8035de
+AppSecret:59571ed07a3c0695a088c915ce94f05f
 
-路由平台账号/密码
-CMCCAdmin/aDm8H%MdA
+重新绑定需要清一下token: echo "" > /mnt/vendor/param/connectToken_persist
+恢复出厂设置：连续按 音量加、音量减、禁麦、音量减、音量加 触发
 
-enable-verity
+开adb:
+1. 音量+禁麦
+2. factoryTest/adb_enabled.xml
+3.长按禁麦和静音键
 
-712信息
+分支：aml/android-9.0.0_r3/mtv/2026
+
+U盘adb: bootloader/uboot-repo/bl33/board/amlogic/configs/sm1_t239_v1.h:117: "otg_device=1\0"\
+
+# 禁止内核日志输出
+echo 0 > /proc/sys/kernel/printk
+
+# 跳过导入配置文件界面，执行过则不需要
+echo 1>/mnt/vendor/param/usermode
+
+cd /sys/class/unifykeys
+echo "usid" > name
+echo 1664011529111132090000004 > write
+echo mac > name
+echo 28:BE:F3:24:7A:51 > write
+echo mac_wifi > name                            
+echo 28:BE:F3:24:7A:51 > write
+echo sn > name
+echo 1664011529111132090000004 > write
+echo cmccpwd > name
+echo de49bf3d437f > write
+echo cmei > name
+echo 111132090000004 > write
+echo prd_date > name
+echo 20260813 > write
+
+logcat | grep -iE "start u0|Displayed"
+kill $(pidof cm.komect.aqb.android.cloudcomputerpad)    进程在时执行
+
+
+console:/ # cd /sys/class/unifykeys/                                           
+console:/sys/class/unifykeys # ls
+attach  exist list name secure unifykeys write 
+encrypt help  lock read size   version   
+console:/sys/class/unifykeys # echo prd_date > name 
+console:/sys/class/unifykeys # echo 20260813 > write                           
+console:/sys/class/unifykeys # 
+
+
+
+
+需要注意RF txt 文件要保留老的
+hardware/wifi/amlogic/drivers/w2/common/aml_w2_rf_0640_0111.txt
+hardware/wifi/amlogic/drivers/w2/common/aml_w2_rf_0641_0332.txt
+
+
+AndLink持久化存储：
+content call --uri content://com.cmcc.jarvis.permissionprovider --method getConnectToken
+
+
+老人模式、儿童模式、无线投屏在入库群叫Abby老师配置，需要设备型号TB712/612, 设备ID592481。martin颜老师配置的
+
+
+[ro.build.date]: [Thu Aug  6 09:31:48 AM CST 2026]
+
+
+export STARNET_ENABLE=true
+
+device/amlogic/common/core_amlogic.mk
+ifeq ($(STARNET_ENABLE),true)
+include vendor/starnet/starnet.mk
+endif
+
+
+isUserSetupComplete()
+
+
+广东灵犀管家安装失败原因安装失败的原因：ContentProvider 冲突
+在/system/app/AiAreaHost/AiAreaHost.apk=com.iflytek.aiarea已经有com.iflytek.aiareahome中的provider
+provider: com.iflytek.vlib.core.provider
+
+
+vendor/p291_tb611/configs/mk/device/amlogic/common/products/iptv/product_iptv.mk
+PRODUCT_DEL_PACKAGES += 
+    Camera2   // 删除
+
+device/amlogic/common/products/iptv/product_iptv.mk
+
+
+mPowerManager.goToSleep(SystemClock.uptimeMillis(),PowerManager.GO_TO_SLEEP_REASON_POWER_BUTTON, 0);
+
+
+声音输出：vendor.audio.hdmioutput
+
+
+播放视频左右黑色边框：vendor/amlogic/common/apps/TvInput/DroidLogicTvInput/src/com/droidlogic/tvinput/settings/SettingsManager.java
+
+
+软键盘反馈声音
+frameworks/base/core/res/res/values/config.xml
+<integer name="config_soundEffectVolumeDb">-18</integer>
+
+
+长按电源键时间
+device/amlogic/p291_iptv/overlay_chinamobile_sd/frameworks/base/core/res/res/values/config.xml
+<integer name="config_veryLongPressTimeout">2000</integer>
+device/amlogic/p291_iptv/overlay_t249/frameworks/base/core/res/res/values/config.xml
+<integer name="config_veryLongPressTimeout">2000</integer>
+frameworks/base/core/res/res/values/config.xml
+<integer name="config_veryLongPressTimeout">2000</integer>
+
+
+移动云盘：com.chinamobile.mcloudtv2
+
+08-27 09:55:59.862  3843  4384 I ActivityManager: START u0 {flg=0x10000000 pkg=com.chinamobile.mcloudtv2 cmp=com.chinamobile.mcloudtv2/com.chinamobile.caiyun.activity.CaiYunMainActivity} from uid 1000
+08-27 09:56:03.503  3843  3903 I ActivityManager: Displayed com.chinamobile.mcloudtv2/com.chinamobile.caiyun.activity.CaiYunMainActivity: +3s581ms
+
+
+08-28 16:53:38.511  3880  3999 D WindowManager: interceptKeyTq keycode=26 interactive=false keyguardActive=false policyFlags=2000000 eventflags=8
+08-28 16:53:41.373  3398  3455 D MesonHwc: Display (0) ask for refresh.
+08-28 16:53:41.373  3398  3455 D MesonHwc: screenMutedThread, refresh
+1.373 + 1.489 = 2.862
+
+08-28 18:04:34.226  3876  3995 D WindowManager: interceptKeyTq keycode=26 interactive=false keyguardActive=false policyFlags=2000000 eventflags=8
+08-28 18:04:35.370  3393  3419 D MesonHwc: Display (0) ask for refresh.
+08-28 18:04:35.370  3393  3419 D MesonHwc: screenMutedThread, refresh
+0.37 + 0.774 = 1.144
+
+1.718
+
+
+熄屏未静音：
+hardware/amlogic/audio/audio_hal/amlAudioMixer.c
+frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java
+
+按电源亮屏慢：
+hardware/amlogic/hwcomposer/hwc2/Hwc2Display.cpp
+vendor/amlogic/common/frameworks/services/systemcontrol/DisplayMode.cpp
+
+
+
+source build/envsetup.sh
+lunch p291_iptv-userdebug
+export OEM_TARGET=p291_tb611
+export STARNET_ENABLE=true
+
+编译audio.primary.amlogic
+make audio.primary.amlogic
+vendor/lib/hw/audio.primary.amlogic.so
+
+编译services
+mmm frameworks/base/services
+/system/framework/services.jar
+/system/framework/oat/arm/services.odex
+/system/framework/oat/arm/services.vdex
+
+单编pdm
+ro属性设置开关：persist.ro.white_list.enable
+
+
+1. 设置-本机信息没有文件管理(Item 95)
+2. 拔掉HDMI电视没声音(Item 93)
+3. 移动云盘启动蓝屏、启动慢问题
+4. 蓝牙遥控器断连问题（连上遥控器验证了20分钟不操作没断连）
+
+09-03 15:01:14.118  3723 21038 I ActivityManager: START u0 {cat=[android.intent.category.LAUNCHER] flg=0x10000000 pkg=cm.komect.aqb.android.cloudcomputerpad cmp=cm.komect.aqb.android.cloudcomputerpad/cm.komect.aqb.android.main.page.mainpage.MainActivity (has extras)} from uid 1000
+09-03 15:01:16.411  3723  3949 I ActivityManager: Displayed cm.komect.aqb.android.cloudcomputerpad/cm.komect.aqb.android.main.page.authorization.AuthorityActivity: +178ms (total +2s404ms)
+
+
+开关屏声音问题。Item 60/87
+蓝牙回连慢、立即使用语音无响应的问题。Item 28
+蓝牙连接后有3次提醒 Item 10
+Item 15 设备接入HDMI后，播放本地中的解码视频、移动高清内播放直播、点播时未展示默认图片 验证情况：直播、点播、本地视频中屏有展示默认图片
+
+
+am: support dual screen app display. [1/1]
+
+PD#IPTV-27674
+
+Problem:
+mid tv function docking.
+
+Solution:
+support dual screen app display.
+
+Verify:
+S905L3AP
+
+Change-Id: Ie32bc945298f46eb1a6fd9cb5d63e0b36af28aec
+Signed-off-by: Xy Ding <xy.ding@amlogic.com>
+Signed-off-by: chunlong.du <chunlong.du@amlogic.com>
+
+1. 添加接口处理获取/修改声音输出
+2. 处理亮屏慢的问题，熄屏后、亮屏前有声音输出的问题
+3. 协助晶晨处理问题
+
+PhoneWindowManager中设置参数控制声音
+PhoneWindowManager.goToSleep()              ── 第 2767 行，按键处理线程(system_server 主线程)
+ └─ AudioManager.setParameters()            ── 纯 Java，不过 AudioService
+     └─ AudioSystem.setParameters()         ── native 方法声明(Java)
+         └─ JNI android_media_AudioSystem_setParameters()
+             └─ AudioSystem::setParameters()        // libaudioclient(C++)
+                 └─ BpAudioFlinger::setParameters() // binder IPC → audioserver 进程
+                     └─ AudioFlinger::setParameters()// 服务端，ioHandle=0 → 全局分支
+                         └─ for mAudioHwDevs: dev->setParameters()   // 持 mLock/mHardwareLock
+                             └─ 适配层(audio HAL 接口实现)
+                                 └─ audio_hw_device.set_parameters(dev, "TV-Mute=1")
+                                     └─ adev_set_parameters()   // audio_hw.c:5665
+                                         └─ TV-Mute 解析分支      // audio_hw.c:6561-6568
+                                             └─ 写入三个标志，实际静音由各写路径线程在下一轮循环轮询标志时体现
+                                                 └─ mixer_output_write  amlAudioMixer.c:466-477
+                                                     └─ submixer 线程丢弃 ALSA ring 内已缓存音频, 消除残余声音
+                                                     └─ 主混音器 aml_hw_mixer.c:169（memset）重置
+
+
+
+产品ID：592579
+TUI/TAC：11113571
+产品验证码(productToken)：HwT7D0nq4nLAKlrq
+
+
+if (mAudioManager == null) {
+    mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+}
+mAudioManager.setParameters("TV-Mute=0");
+
+
+
+过渡版实现通过命令行修改设备信息、key、token等业务信息
+
+ro.product.cmcc_productToken/ro.product.cmcc_token/productToken=HwT7D0nq4nLAKlrq
+ro.product.cmcc_andlinkToken/ro.product.cmcc_andlinktoken/andlinkToken=iZgH5qNX11ooEYj5
+appKey=l8f67gw6sub2iyjx
+appSecret=s4n6mxfspzn1i7ac
+
+common/arch/arm/boot/dts/amlogic/keyman_gxlx.dtsi 增加索引26~29的节点
+device/amlogic/p291_iptv/vendor_prop_sdmobile.mk 去掉需要修改的几个ro属性
+system/core/init/property_service.cpp 允许动态修改白名单中的ro属性 PropertySet方法
+
+
+
+
+./migrate_push.sh --dry-run                 # 先看会提交/推什么
+./migrate_push.sh --exec                    # 确认无误再执行
+./migrate_push.sh --dry-run --only common frameworks/base   # 也可只挑几个
+
+
+
+看设备使用使用的是那个dts(有多个版本的场景，uboot启动阶段根据boardid选)
+adb shell cat /proc/device-tree/amlogic-dt-id     # 期望 sm1_t249v4_2g
+adb shell cat /sys/firmware/devicetree/base/amlogic-dt-id
+
+echo dump >/sys/class/lcd/debug
+cat /sys/class/aml_bl/status
+
+dmesg -C
+echo dump >/sys/class/lcd/debug
+dmesg
+
+
+Item: 17\40
+
+
+恢复出厂设置
+# 清理旧命令并写入新命令
+rm -f /cache/recovery/command
+echo "--wipe_data" > /cache/recovery/command
+echo "--wipe_cache" >> /cache/recovery/command
+sync
+sleep 1
+sync
+# 重启进入 recovery 执行擦除
+reboot recovery
+
+
+24、25: 音量加减
+139:禁麦键
+
+
+612信息
 设备信息
-pdm.cli set stbid 0099360070742080260428BEF3247A81
-pdm.cli set mac 28:BE:F3:24:7A:81
-pdm.cli set mac_wifi 28:BE:F3:24:7A:81
-pdm.cli set sn 1664011529111132090000010
-pdm.cli set cmccpwd 25d3f5fa16e9
-pdm.cli set cmei 111132090000010
+pdm.cli set stbid 0099360080742080260990848E81E4B1
+pdm.cli set mac 90:84:8E:81:E4:B1
+pdm.cli set mac_wifi 90:84:8E:81:E4:B0
+pdm.cli set sn 1664011529111135710000007
+pdm.cli set cmccpwd fe4446a5086b
+pdm.cli set cmei 111135710000007
 版本信息
-pdm.cli set device_id 592288
-pdm.cli set product_token N1EDEKelp9EeSUmF
-pdm.cli set andlink_token 1yppKcK7I5R0Td77
+pdm.cli set device_id 592579
+pdm.cli set product_token HwT7D0nq4nLAKlrq
+pdm.cli set andlink_token iZgH5qNX11ooEYj5
 pdm.cli set manufacturer STAR
 pdm.cli set brand STAR-NET
-pdm.cli set model TB712
-pdm.cli set device TB712
+pdm.cli set model TB612
+pdm.cli set device TB612
 pdm.cli set cmcc_brand STAR-NET
-pdm.cli set cmcc_ims_app_id utoknf5k5t5qatav
-pdm.cli set cmcc_ims_secret t1vffb9xl5pn8xrq
+pdm.cli set cmcc_ims_app_id l8f67gw6sub2iyjx
+pdm.cli set cmcc_ims_secret s4n6mxfspzn1i7ac
 
-source build/envsetup.sh && lunch cmcc_base-userdebug && make installclean && make otapackage aml_upgrade
+pdm.cli set stbid reset
+pdm.cli set mac reset
+pdm.cli set mac_wifi reset
+pdm.cli set sn reset
+pdm.cli set cmccpwd reset
+pdm.cli set cmei reset
 
-我的账号：deviid -s 1664011529111132090000010 -a 28:BE:F3:24:7A:81 -m 28:BE:F3:24:7A:81 -M TB712 -u Star-Net -i 592288 -n TB712 -c 111132090000010 -p 25d3f5fa16e9 -t 0032360080742080260628BEF3247A81
-重置账号：deviid -s 1884011529111132090000010 -a 58:BE:F3:24:7A:81 -m 58:BE:F3:24:7A:81 -M TB712 -u Star-Net -i 592288 -n TB712 -c 222232090000010 -p 52d3f5fa16e9 -t 3230060080742080260628BEF3247A81
-
-ro.product.cmcc_deviceId=592288
-
-升级广播  
-adb shell am broadcast -a android.intent.action.askillsdk.ota -n com.ota.skillsdk/.SkillSdkOtaReceiver --es filePath "/sdcard/update.zip"
-
-外部支持
-微信入库群：Abby帮配置老人模式、儿童模式、无线投屏
-
-
-adb kill-server
-adb start-server
-
-厂商是Star-Net，报备过的，不然移动高清会提示当前设备不可用
-新设备使用移动高清要报备
-gmodel: TB712
-gmanufacturer: Star-Net
-设备类型：触屏设备
-给移动高清报备抄送局方
-
-
-处理省份集成的apk要系统签名的问题
-commit b191124636cac8e004f6c2e889b744cdf709012c
-
-
-底座日志：
-拆分前：
-/sdcard/Android/data/com.cmcc.jarvis/cache/logs
-
-拆分后：
-智话日志：/sdcard/Android/data/com.cmhi.universalapp.aiotel/cache/logs
-智能体日志：/sdcard/Android/data/com.cmcc.lingxiagent/cache/logs
-安防日志：/sdcard/cmcc/thirdapplogs/anfang
-
-ajlauncher日志：
-/storage/emulated/0/Android/data/com.komect.ajlauncher/files/com.komect.ajlauncher/xLog
-
-
-USB adb
-common/common14-5.15/common/common_drivers/arch/arm64/boot/dts/amlogic/s6_s905l5ap_bq210.dts
-&crg_otg {
-	status = "okay";
-	controller-type = <2>; /* 0~3: normal, host, device, otg */
-};
-
-设置默认launcher
-adb shell pm set-home-activity com.komect.ajlauncher/.SplashActivity
-
-
-presigned: false,
-certificate: "platform"
-
-
-2.6.0的底座在关闭wifi后退出设置，再次打开设置会自动打开wifi并连上是应用的正常功能
-
-讯飞进程：
-ps -e | grep ifly
-
-长按电源键功能控制属性：
-persist.vendor.long.power.ability=sleep,deepsleep,reboot,shutdown
-默认显示重新启动和关机:reboot,shutdown
-
-
-// 切换到root权限
-su;
-// 清理历史日志
-logcat -c
-// 开始抓日志
-logcat > /data/0001.log &
-// 执行要抓日志对应的操作
-// 结束抓日志
-killall -9 logcat
-
-复制目录：cp -a tb_p-amlogic-20240429 tb_p-amlogic-20240429_backup
-附带权限信息比-r更全
-
-
-微信入库群：@Martin 颜老师，麻烦配置下长辈模式
-语音搜索出来的电影不能播放是智能体的问题，后续处理
-入库版移动高清日志commands可以查看支持那些指令
-
-MediaCodec（Android 系统的硬件解码接口）
-
-取消升级：update_engine_client --cancel
-
-monkey启动原生相机：monkey -p com.android.camera2 1
-
-
-串口/adb 是否需要密码：PRODUCT_SUPPORT_CONSOLE_PASSWORD
-
-编译uboot: 
-cd bootloader/uboot-repo/
-./mk s6_bq210 --vab --avb2 --fastboot-write
-产物: bootloader\uboot-repo\build
-
-
-北京市：11；天津市：12；河北省：13；山西省：14；内蒙古自治区：15；辽宁省：21；吉林省：22；黑龙江省：23；上海市：31；江苏省：32；浙江省：33；安徽省：34；福建省：35；江西省：36；山东省：37；河南省：41；湖北省：42；
-湖南省：43（-2  未来电视     不带2 是芒果）；广东省：44；广西壮族自治区：45；海南省：46；重庆市：50；四川省：51；贵州省：52；云南省：53；陕西省：61；甘肃省：62；青海省：63；宁夏回族自治区：64；新疆维吾尔自治区：65；西藏54
-
---------------灵犀屏分省桌面对应序号
-
-
-
-
-
-
-
-我们deepseek的大模型，claude去修改配置，url填写：http://192.168.0.20:3021，token用我发给他们的就行，env里加个变量说是能提高命中率："CLAUDE_CODE_ATTRIBUTION_HEADER": "0",
-
-{
-  "env": {
-    "ANTHROPIC_BASE_URL": "http://192.168.0.20:3021",
-    "ANTHROPIC_AUTH_TOKEN": "starnet-176cedd2-da86-4d7f-b97f-daa9acfe5095",
-    "CLAUDE_CODE_EFFORT_LEVEL": "max",
-    "CLAUDE_CODE_ATTRIBUTION_HEADER": "0"
-  }
-}
-starnet-176cedd2-da86-4d7f-b97f-daa9acfe5095
-
-
-串口/adb要登陆：
-device/amlogic/raman/raman.mk
-PRODUCT_SUPPORT_CONSOLE_PASSWORD := true
-
-
-mmm frameworks/base/services
-单编service替换如下文件：
-services.jar	/system/framework/services.jar
-services.jar.prof	/system/framework/services.jar.prof
-oat/arm/services.art	/system/framework/oat/arm/services.art
-oat/arm/services.odex	/system/framework/oat/arm/services.odex
-oat/arm/services.vdex	/system/framework/oat/arm/services.vdex
-
-
-查找 ninja 可执行文件和 combined ninja 文件位置
-ninja 位于: prebuilts/build-tools/linux-x86/bin/ninja
-combined ninja 文件: out/combined-raman.ninja
-
-执行 m nothing 可以生成out/combined-xxx.ninja
 
 prebuilts/build-tools/linux-x86/bin/ninja \
-    -f out/combined-cmcc_base.ninja \
-    services \
-    -j8
+    -f out/combined-p291_iptv.ninja \
+    services
+
+默认开
+关 setprop persist.adb.pwd.enable 0
+
+adb 安装应用
+setprop persist.adb.install.enable 1
 
 
-恢复出厂设置组合键：KEYCODE_VOLUME_UP + KEYCODE_MUTE
+模块（APK/服务）层面用的是 vendor/p291_tb611/iFlytek/ 那一套；但 PRODUCT_COPY_FILES 层面两套都被继承，同名目的路径以 device 那套为准 —— 最终镜像是个混合体。
 
-KEYCODE_MUTE、KEYCODE_MUTE、KEYCODE_MUTE、KEYCODE_VOLUME_DOWN、KEYCODE_VOLUME_DOWN、KEYCODE_VOLUME_UP
-KEYCODE_MUTE、KEYCODE_MUTE、KEYCODE_MUTE、KEYCODE_VOLUME_DOWN、KEYCODE_VOLUME_UP、KEYCODE_VOLUME_DOWN
+
+repo init -u http://git.starnetuc.info:8929/cm-pdt/manifest -b main \
+          -m amlogic/odm/android-9.0.0_r3/mtv/2026/default.xml
+repo sync -j8
+
+
+移动智话：com.cmhi.universalapp.aiotel
+
+
+echo "" > /mnt/vendor/param/connectToken_persist
+settings put global com.cmcc.jarvis.token ""
+
+
+写新设备信息后无法扫码绑定
+adb shell rm -f /mnt/vendor/param/connectToken_persist
+adb shell settings delete global com.cmcc.jarvis.token
+adb shell rm -f /data/data/com.cmcc.jarvis/shared_prefs/env_keep.xml \
+                 /data/data/com.cmcc.jarvis/shared_prefs/env_user.xml
+adb shell am force-stop com.cmcc.jarvis
+adb reboot
+
+
+updater.cli --apply_url http://192.168.0.80:32789/s905l3ap-2609211558/out/target/product/p291_iptv/update_sys_s905l3ap_tb611.zip --progress --reboot
+
+
+content call --uri content://com.cmcc.jarvis.permissionprovider --method getCecStatus
+
+编译uboot
+cd ~/s905l3ap-2609211558/bootloader/uboot-repo
+export PATH=/opt/gcc-linaro-aarch64-none-elf-4.8-2013.11_linux/bin:/opt/Sourcery_G++_Lite/bin:$PATH
+./mk sm1_t249_v1 --systemroot
+
+cp bootloader/uboot-repo/build/u-boot.bin        device/amlogic/p291_iptv/bootloader_t249/bootloader.img
+cp bootloader/uboot-repo/build/u-boot.bin.sd.bin device/amlogic/p291_iptv/upgrade_t249/u-boot.bin.sd.bin
+cp bootloader/uboot-repo/build/u-boot.bin.usb.bl2 device/amlogic/p291_iptv/upgrade_t249/u-boot.bin.usb.bl2
+cp bootloader/uboot-repo/build/u-boot.bin.usb.tpl device/amlogic/p291_iptv/upgrade_t249/u-boot.bin.usb.tpl
+
+
+禁麦
+settings put global lingxi_stop_mic 0
+
+vendor.backlight
+
+
+cmd package query-services -a com.cmcc.lingxiagent.action.ASR_SERVICE
+
+TODO
+http://git.starnetuc.info:8929/cm-pdt/vendor_starnet repo仓库分支待改成 aml/android-9.0.0_r3/mtv/2026
+http://git.starnetuc.info:8929/cm-pdt/aosp_platform_frameworks_base
+http://git.starnetuc.info:8929/cm-pdt/vendor_amlogic_hardware_amlogic_audio
+http://git.starnetuc.info:8929/cm-pdt/vendor_amlogic_hardware_amlogic_hwcomposer
+http://git.starnetuc.info:8929/cm-pdt/vendor_amlogic_device_amlogic-o   远程有新的提交（有问题、未合到本地）
+
+repo sync -c --no-tags
+
+
+处理612中声音输出、语音唤醒未亮屏等问题
+配合晶晨处理612中的问题
+统一处理开启adb和恢复出厂设置的方法
+在标准版添加updater和pdm工具
+配合椰壳处理摄像头泛红的问题
+
+./tb611_s905L3ap_p291.sh -k 1
+80_32828_612_ld
+/home/ws/s905l3ap-2610111500
+
+source build/envsetup.sh && lunch cmcc_nmg-userdebug && make otapackage
+http://git.starnetuc.info:8929/cm-pdt/device_cmcc_nmg
