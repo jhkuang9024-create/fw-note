@@ -123,7 +123,3 @@ m vold -j8
 scp 80_32822_622:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/system/bin/vold "/Users/jhkuang/Desktop/work/middle_screen/过渡版-622/U盘拔掉后目录不自动删除"
 
 
-
-待机停止声音
-com.ophone.reader.ui/.feature.tts.landscape.LandTTSListenBookActivity
-com.czly.tabletmusic/.activities.MusicDetailActivity
