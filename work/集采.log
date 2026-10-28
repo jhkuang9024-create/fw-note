@@ -1,0 +1,14 @@
+./tb611_s905L3ap_p291.sh -v 1.0.1 -k
+
+
+定制仓库/分支：
+device/amlogic aml/android-9.0.0_r3/mtv/2026_622
+common aml/android-9.0.0_r3/mtv/2026_622
+bootloader/uboot-repo/bl33 aml/android-9.0.0_r3/mtv/2026_622
+system/core  rootRelay_mtv2026
+vendor/starnet tmp_QPLTest
+
+
+
+
+

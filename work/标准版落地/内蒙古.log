@@ -1,0 +1,11 @@
+版本号：35.50-V1.0.1-NMG
+source build/envsetup.sh && lunch cmcc_nmg-userdebug && make otapackage
+
+source build/envsetup.sh && lunch cmcc_nmg-userdebug && make apk2bp
+apk2bp device/starnet/cmcc_xz/prebuilts/packages
+
+scp 80_32828_612_ld:/home/ws/s905l3ap-2610111500/out/target/product/cmcc_nmg/{aml_upgrade_package.img,cmcc_nmg-ota-eng.kuangjunhua.zip} "/Users/jhkuang/Desktop/work/middle_screen/标准版省份落地/内蒙古/out/10-15/"
+
+
+软终端apk集成启动会崩溃
+把 .so 直接预置到该 lib/arm/ 目录

@@ -384,7 +384,7 @@ vendor.backlight
 cmd package query-services -a com.cmcc.lingxiagent.action.ASR_SERVICE
 
 TODO
-http://git.starnetuc.info:8929/cm-pdt/vendor_starnet repo仓库分支待改成 aml/android-9.0.0_r3/mtv/2026
+http://git.starnetuc.info:8929/cm-pdt/vendor_starnet repo仓库分支待改成 aml/android-9.0.0_r3/mtv/2026 vendor_starnet已经合到不带aml的分支
 http://git.starnetuc.info:8929/cm-pdt/aosp_platform_frameworks_base
 http://git.starnetuc.info:8929/cm-pdt/vendor_amlogic_hardware_amlogic_audio
 http://git.starnetuc.info:8929/cm-pdt/vendor_amlogic_hardware_amlogic_hwcomposer
@@ -405,3 +405,32 @@ repo sync -c --no-tags
 
 source build/envsetup.sh && lunch cmcc_nmg-userdebug && make otapackage
 http://git.starnetuc.info:8929/cm-pdt/device_cmcc_nmg
+
+
+scp 80_32788_612:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/{p291_tb611.img,update_sys_s905l3ap_tb611.zip} "/Users/jhkuang/Desktop/work/middle_screen/过渡版-612/out/10-15/"
+
+console:/ # getprop ro.serialno
+0099360080742080260990848E81E4B1
+console:/ # getprop ro.product.stbid
+0099360080742080260990848E81E4B1
+console:/ # getprop ro.mac
+90:84:8E:81:E4:B1
+
+cat /proc/cmdline
+
+
+编译uboot
+cd bootloader/uboot-repo
+./mk sm1_t249_v1
+cp build/u-boot.bin ../../device/amlogic/p291_iptv/bootloader_t249/bootloader.img
+cp build/u-boot.bin.usb.bl2 ../../device/amlogic/p291_iptv/upgrade_t249/u-boot.bin.usb.bl2
+cp build/u-boot.bin.usb.tpl ../../device/amlogic/p291_iptv/upgrade_t249/u-boot.bin.usb.tpl
+cp build/u-boot.bin.sd.bin ../../device/amlogic/p291_iptv/upgrade_t249/u-boot.bin.sd.bin
+
+允许 pm install 安装： sys.disable_adb_pm_install
+
+软探针：系统播放MediaPlayer播放才能记录
+
+
+包	     合计	 apk	 oat	jni	 业务      包名
+eduApp	260M	145M	62M	   51M	爱家伴学   com.cmri.aijia.edu.pad

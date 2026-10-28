@@ -14,3 +14,6 @@ git stash push -u -m "福建版本临时保存"
 setprop persist.aisound.appKey 5zzpfbnjyw7dkuyusiyylmnleuje5ixlfhhcjlqo
 setprop persist.aisound.appSecret bc001c748b0c04177b194298d7af313c
 killall com.cmcc.aisound
+
+
+ro.build.version.release

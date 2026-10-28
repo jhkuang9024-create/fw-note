@@ -1,0 +1,30 @@
+
+make installclean -j8
+source build/envsetup.sh && lunch cmcc_jxi-userdebug && make otapackage
+
+source build/envsetup.sh && lunch cmcc_jxi-userdebug && make out/soong/host/linux-x86/bin/apk2bp
+apk2bp device/starnet/cmcc_jxi/prebuilts/packages
+
+scp 80_32828_612_ld:/home/ws/s905l3ap-2610111500/out/target/product/cmcc_jxi/{aml_upgrade_package.img,cmcc_jxi-ota-eng.kuangjunhua.zip} "/Users/jhkuang/Desktop/work/middle_screen/标准版省份落地/江西/out/10-22"
+updater.cli --apply_url http://192.168.0.80:32828/s905l3ap-2610111500/out/target/product/cmcc_jxi/cmcc_jxi-ota-eng.kuangjunhua.zip --reboot
+
+
+预置apk:
+tv.icntv.ott.panscreen.jxmbhd: 移动高清
+com.ysten.panscreen.jxmbhd.auth: 认证apk
+com.ysten.order: 支付 apk
+com.istv.appstore: 应用大厅
+com.tv.icntv: 升级助手
+
+com.iflytek.aiarea:灵犀管家
+com.iflytek.xiri:讯飞语音助手
+com.iflytek.aiareahome:广东灵犀管家（不需要）
+
+安装不上灵犀管家：
+两个灵犀管家都声明了com.iflytek.vlib.core.provider, 包名不同, 不能共存, 所以安装不上广东灵犀管家
+
+
+
+PROJECT_TYPE := sdmobile 使用位置:
+/device/amlogic/p291_iptv/p291_iptv.mk
+/vendor/p291_tb611/configs/mk/device/amlogic/p291_iptv/p291_iptv.mk

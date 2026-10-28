@@ -1,0 +1,575 @@
+INPUT MANAGER (dumpsys input)
+
+Input Manager State:
+  Interactive: true
+  System UI Visibility: 0x0
+  Pointer Speed: 0
+  Pointer Gestures Enabled: true
+  Show Touches: false
+  Pointer Capture Enabled: false
+
+Event Hub State:
+  BuiltInKeyboardId: -2
+  Devices:
+    -1: Virtual
+      Classes: 0x40000023
+      Path: <virtual>
+      Enabled: true
+      Descriptor: a718a782d34bc767f4689c232d64d527998ea7fd
+      Location: 
+      ControllerNumber: 0
+      UniqueId: <virtual>
+      Identifier: bus=0x0000, vendor=0x0000, product=0x0000, version=0x0000
+      KeyLayoutFile: /vendor/usr/keylayout/Generic.kl
+      KeyCharacterMapFile: /system/usr/keychars/Virtual.kcm
+      ConfigurationFile: 
+      HaveKeyboardLayoutOverlay: false
+    1: jadard-touchscreen
+      Classes: 0x00000014
+      Path: /dev/input/event1
+      Enabled: true
+      Descriptor: 05ab20d8f240ca495f164a09b0b489b3be22e9cc
+      Location: 
+      ControllerNumber: 0
+      UniqueId: 
+      Identifier: bus=0x0000, vendor=0x0000, product=0x0000, version=0x0000
+      KeyLayoutFile: 
+      KeyCharacterMapFile: 
+      ConfigurationFile: 
+      HaveKeyboardLayoutOverlay: false
+    2: cec_input
+      Classes: 0x00000001
+      Path: /dev/input/event3
+      Enabled: true
+      Descriptor: 02b1ce58713e0e531eab61b0742baac6893ff49f
+      Location: 
+      ControllerNumber: 0
+      UniqueId: 
+      Identifier: bus=0x0010, vendor=0x1b8e, product=0x0cec, version=0x0001
+      KeyLayoutFile: /vendor/usr/keylayout/Generic.kl
+      KeyCharacterMapFile: /system/usr/keychars/Generic.kcm
+      ConfigurationFile: 
+      HaveKeyboardLayoutOverlay: false
+    3: aml_vkeypad
+      Classes: 0x00000001
+      Path: /dev/input/event2
+      Enabled: true
+      Descriptor: 485d69228e24f5e46da1598745890b214130dbc4
+      Location: keypad/input0
+      ControllerNumber: 0
+      UniqueId: 
+      Identifier: bus=0x0000, vendor=0x0001, product=0x0001, version=0x0100
+      KeyLayoutFile: /vendor/usr/keylayout/Vendor_0001_Product_0001.kl
+      KeyCharacterMapFile: /system/usr/keychars/Generic.kcm
+      ConfigurationFile: 
+      HaveKeyboardLayoutOverlay: false
+    4: gpio_keypad
+      Classes: 0x00000001
+      Path: /dev/input/event0
+      Enabled: true
+      Descriptor: d2c52ff0f656fac4cd7b7a118d575e0109a9fe1c
+      Location: gpio_keypad/input0
+      ControllerNumber: 0
+      UniqueId: 
+      Identifier: bus=0x0010, vendor=0x0001, product=0x0001, version=0x0100
+      KeyLayoutFile: /vendor/usr/keylayout/Vendor_0001_Product_0001.kl
+      KeyCharacterMapFile: /system/usr/keychars/Generic.kcm
+      ConfigurationFile: 
+      HaveKeyboardLayoutOverlay: false
+    5: vad_keypad
+      Classes: 0x00000001
+      Path: /dev/input/event5
+      Enabled: true
+      Descriptor: 3ff0f65e296fcbd89914545764ea53395eb45fc1
+      Location: vad_keypad/input3
+      ControllerNumber: 0
+      UniqueId: 
+      Identifier: bus=0x0010, vendor=0x0001, product=0x0001, version=0x0100
+      KeyLayoutFile: /vendor/usr/keylayout/Vendor_0001_Product_0001.kl
+      KeyCharacterMapFile: /system/usr/keychars/Generic.kcm
+      ConfigurationFile: 
+      HaveKeyboardLayoutOverlay: false
+    6: input_btrcu
+      Classes: 0x00000001
+      Path: /dev/input/event4
+      Enabled: true
+      Descriptor: 9e0e2e03ace6726d18be76b8ddb815cf002c80fb
+      Location: input_btrcu/input0
+      ControllerNumber: 0
+      UniqueId: 
+      Identifier: bus=0x0010, vendor=0x0001, product=0x0001, version=0x0100
+      KeyLayoutFile: /vendor/usr/keylayout/Vendor_0001_Product_0001.kl
+      KeyCharacterMapFile: /system/usr/keychars/Generic.kcm
+      ConfigurationFile: 
+      HaveKeyboardLayoutOverlay: false
+    7: adc_keypad
+      Classes: 0x00000001
+      Path: /dev/input/event6
+      Enabled: true
+      Descriptor: a6893ab22828f3b8b792fe40bc0d6df2b2725f26
+      Location: adc_keypad/input0
+      ControllerNumber: 0
+      UniqueId: 
+      Identifier: bus=0x0010, vendor=0x0001, product=0x0001, version=0x0100
+      KeyLayoutFile: /vendor/usr/keylayout/Vendor_0001_Product_0001.kl
+      KeyCharacterMapFile: /system/usr/keychars/Generic.kcm
+      ConfigurationFile: 
+      HaveKeyboardLayoutOverlay: false
+    8: input_btdrv
+      Classes: 0x00000001
+      Path: /dev/input/event7
+      Enabled: true
+      Descriptor: 66456da0b0398dc6e4b9d022ef172656b5463920
+      Location: input_btdrv/input0
+      ControllerNumber: 0
+      UniqueId: 
+      Identifier: bus=0x0010, vendor=0x0001, product=0x0001, version=0x0100
+      KeyLayoutFile: /vendor/usr/keylayout/Vendor_0001_Product_0001.kl
+      KeyCharacterMapFile: /system/usr/keychars/Generic.kcm
+      ConfigurationFile: 
+      HaveKeyboardLayoutOverlay: false
+
+Input Reader State:
+  Device -1: Virtual
+    Generation: 2
+    IsExternal: false
+    HasMic:     false
+    Sources: 0x00000301
+    KeyboardType: 2
+    Keyboard Input Mapper:
+      Parameters:
+        HasAssociatedDisplay: false
+        OrientationAware: false
+        HandlesKeyRepeat: false
+      KeyboardType: 2
+      Orientation: 0
+      KeyDowns: 0 keys currently down
+      MetaState: 0x0
+      DownTime: 0
+  Device 1: jadard-touchscreen
+    Generation: 18
+    IsExternal: false
+    HasMic:     false
+    Sources: 0x00001002
+    KeyboardType: 0
+    Motion Ranges:
+      X: source=0x00001002, min=0.000, max=1919.000, flat=0.000, fuzz=0.000, resolution=0.000
+      Y: source=0x00001002, min=0.000, max=1199.000, flat=0.000, fuzz=0.000, resolution=0.000
+      PRESSURE: source=0x00001002, min=0.000, max=1.000, flat=0.000, fuzz=0.000, resolution=0.000
+      SIZE: source=0x00001002, min=0.000, max=1.000, flat=0.000, fuzz=0.000, resolution=0.000
+      TOUCH_MAJOR: source=0x00001002, min=0.000, max=2264.156, flat=0.000, fuzz=0.000, resolution=0.000
+      TOUCH_MINOR: source=0x00001002, min=0.000, max=2264.156, flat=0.000, fuzz=0.000, resolution=0.000
+      TOOL_MAJOR: source=0x00001002, min=0.000, max=2264.156, flat=0.000, fuzz=0.000, resolution=0.000
+      TOOL_MINOR: source=0x00001002, min=0.000, max=2264.156, flat=0.000, fuzz=0.000, resolution=0.000
+    Touch Input Mapper (mode - direct):
+      Parameters:
+        GestureMode: multi-touch
+        DeviceType: touchScreen
+        AssociatedDisplay: hasAssociatedDisplay=true, isExternal=false, displayId=''
+        OrientationAware: true
+      Raw Touch Axes:
+        X: min=0, max=1279, flat=0, fuzz=0, resolution=0
+        Y: min=0, max=799, flat=0, fuzz=0, resolution=0
+        Pressure: unknown range
+        TouchMajor: min=0, max=200, flat=0, fuzz=0, resolution=0
+        TouchMinor: unknown range
+        ToolMajor: min=0, max=200, flat=0, fuzz=0, resolution=0
+        ToolMinor: unknown range
+        Orientation: unknown range
+        Distance: unknown range
+        TiltX: unknown range
+        TiltY: unknown range
+        TrackingId: min=0, max=65535, flat=0, fuzz=0, resolution=0
+        Slot: min=0, max=9, flat=0, fuzz=0, resolution=0
+      Calibration:
+        touch.size.calibration: geometric
+        touch.pressure.calibration: none
+        touch.orientation.calibration: none
+        touch.distance.calibration: none
+        touch.coverage.calibration: none
+      Affine Transformation:
+        X scale: 1.000
+        X ymix: 0.000
+        X offset: 0.000
+        Y xmix: 0.000
+        Y scale: 1.000
+        Y offset: 0.000
+      Viewport: displayId=0, orientation=0, logicalFrame=[0, 0, 1920, 1200], physicalFrame=[0, 0, 1280, 800], deviceSize=[1280, 800]
+      SurfaceWidth: 1920px
+      SurfaceHeight: 1200px
+      SurfaceLeft: 0
+      SurfaceTop: 0
+      SurfaceOrientation: 0
+      Translation and Scaling Factors:
+        XTranslate: 0.000
+        YTranslate: 0.000
+        XScale: 1.500
+        YScale: 1.500
+        XPrecision: 0.667
+        YPrecision: 0.667
+        GeometricScale: 1.500
+        PressureScale: 0.000
+        SizeScale: 0.005
+        OrientationScale: 0.000
+        DistanceScale: 0.000
+        HaveTilt: false
+        TiltXCenter: 0.000
+        TiltXScale: 0.000
+        TiltYCenter: 0.000
+        TiltYScale: 0.000
+      Last Raw Button State: 0x00000000
+      Last Raw Touch: pointerCount=0
+      Last Cooked Button State: 0x00000000
+      Last Cooked Touch: pointerCount=0
+      Stylus Fusion:
+        ExternalStylusConnected: false
+        External Stylus ID: -1
+        External Stylus Data Timeout: 9223372036854775807
+      External Stylus State:
+        When: 9223372036854775807
+        Pressure: 0.000000
+        Button State: 0x00000000
+        Tool Type: 0
+  Device 2: cec_input
+    Generation: 14
+    IsExternal: false
+    HasMic:     false
+    Sources: 0x00000101
+    KeyboardType: 1
+    Keyboard Input Mapper:
+      Parameters:
+        HasAssociatedDisplay: false
+        OrientationAware: false
+        HandlesKeyRepeat: false
+      KeyboardType: 1
+      Orientation: 0
+      KeyDowns: 0 keys currently down
+      MetaState: 0x0
+      DownTime: 0
+  Device 3: aml_vkeypad
+    Generation: 12
+    IsExternal: false
+    HasMic:     false
+    Sources: 0x00000101
+    KeyboardType: 1
+    Keyboard Input Mapper:
+      Parameters:
+        HasAssociatedDisplay: false
+        OrientationAware: false
+        HandlesKeyRepeat: false
+      KeyboardType: 1
+      Orientation: 0
+      KeyDowns: 0 keys currently down
+      MetaState: 0x0
+      DownTime: 0
+  Device 4: gpio_keypad
+    Generation: 10
+    IsExternal: false
+    HasMic:     false
+    Sources: 0x00000101
+    KeyboardType: 1
+    Keyboard Input Mapper:
+      Parameters:
+        HasAssociatedDisplay: false
+        OrientationAware: false
+        HandlesKeyRepeat: false
+      KeyboardType: 1
+      Orientation: 0
+      KeyDowns: 0 keys currently down
+      MetaState: 0x0
+      DownTime: 0
+  Device 5: vad_keypad
+    Generation: 8
+    IsExternal: false
+    HasMic:     false
+    Sources: 0x00000101
+    KeyboardType: 1
+    Keyboard Input Mapper:
+      Parameters:
+        HasAssociatedDisplay: false
+        OrientationAware: false
+        HandlesKeyRepeat: false
+      KeyboardType: 1
+      Orientation: 0
+      KeyDowns: 0 keys currently down
+      MetaState: 0x0
+      DownTime: 0
+  Device 6: input_btrcu
+    Generation: 6
+    IsExternal: false
+    HasMic:     false
+    Sources: 0x00000101
+    KeyboardType: 1
+    Keyboard Input Mapper:
+      Parameters:
+        HasAssociatedDisplay: false
+        OrientationAware: false
+        HandlesKeyRepeat: false
+      KeyboardType: 1
+      Orientation: 0
+      KeyDowns: 0 keys currently down
+      MetaState: 0x0
+      DownTime: 0
+  Device 7: adc_keypad
+    Generation: 4
+    IsExternal: false
+    HasMic:     false
+    Sources: 0x00000101
+    KeyboardType: 1
+    Keyboard Input Mapper:
+      Parameters:
+        HasAssociatedDisplay: false
+        OrientationAware: false
+        HandlesKeyRepeat: false
+      KeyboardType: 1
+      Orientation: 0
+      KeyDowns: 0 keys currently down
+      MetaState: 0x0
+      DownTime: 0
+  Device 8: input_btdrv
+    Generation: 19
+    IsExternal: false
+    HasMic:     false
+    Sources: 0x00000101
+    KeyboardType: 1
+    Keyboard Input Mapper:
+      Parameters:
+        HasAssociatedDisplay: false
+        OrientationAware: false
+        HandlesKeyRepeat: false
+      KeyboardType: 1
+      Orientation: 0
+      KeyDowns: 0 keys currently down
+      MetaState: 0x0
+      DownTime: 0
+  Configuration:
+    ExcludedDeviceNames: []
+    VirtualKeyQuietTime: 0.0ms
+    PointerVelocityControlParameters: scale=1.000, lowThreshold=500.000, highThreshold=3000.000, acceleration=3.000
+    WheelVelocityControlParameters: scale=1.000, lowThreshold=15.000, highThreshold=50.000, acceleration=4.000
+    PointerGesture:
+      Enabled: true
+      QuietInterval: 100.0ms
+      DragMinSwitchSpeed: 50.0px/s
+      TapInterval: 150.0ms
+      TapDragInterval: 300.0ms
+      TapSlop: 20.0px
+      MultitouchSettleInterval: 100.0ms
+      MultitouchMinDistance: 15.0px
+      SwipeTransitionAngleCosine: 0.3
+      SwipeMaxWidthRatio: 0.2
+      MovementSpeedRatio: 0.8
+      ZoomSpeedRatio: 0.3
+      Viewports:
+        ViewportInternal:
+          Viewport: displayId=0, orientation=0, uniqueId='', logicalFrame=[0, 0, 1920, 1200], physicalFrame=[0, 0, 1280, 800], deviceSize=[1280, 800]
+        ViewportExternal:
+          Viewport: displayId=0, orientation=0, uniqueId='', logicalFrame=[0, 0, 1920, 1200], physicalFrame=[0, 0, 1280, 800], deviceSize=[1280, 800]
+        ViewportVirtual:
+
+Input Dispatcher State:
+  DispatchEnabled: 1
+  DispatchFrozen: 0
+  FocusedApplication: name='AppWindowToken{25eb8d token=Token{98d0424 ActivityRecord{9eb54b7 u0 com.komect.ajlauncher/com.komect.bussness.epg.EpgHomeActivity t32}}}', dispatchingTimeout=5000.000ms
+  FocusedWindow: name='Window{986fb50 u0 com.komect.ajlauncher/com.komect.bussness.epg.EpgHomeActivity}'
+  TouchStates: <no displays touched>
+  Windows:
+    0: name='Window{8a01f4e u0 com.android.systemui}', displayId=0, paused=false, hasFocus=false, hasWallpaper=false, visible=false, canReceiveKeys=false, flags=0x8184003c, type=0x000007da, layer=0, frame=[0,0][1920,0], scale=1.000000, touchableRegion=<empty>, inputFeatures=0x00000000, ownerPid=4055, ownerUid=10004, dispatchingTimeout=5000.000ms
+    1: name='Window{7cc31e4 u0 com.android.systemui}', displayId=0, paused=false, hasFocus=false, hasWallpaper=false, visible=true, canReceiveKeys=false, flags=0x81840068, type=0x000007de, layer=0, frame=[0,0][18,1200], scale=1.000000, touchableRegion=[0,0][18,1200], inputFeatures=0x00000000, ownerPid=4055, ownerUid=10004, dispatchingTimeout=5000.000ms
+    2: name='Window{8751720 u0 com.android.systemui}', displayId=0, paused=false, hasFocus=false, hasWallpaper=false, visible=true, canReceiveKeys=false, flags=0x81840068, type=0x000007de, layer=0, frame=[0,0][1920,30], scale=1.000000, touchableRegion=[0,0][1920,30], inputFeatures=0x00000000, ownerPid=4055, ownerUid=10004, dispatchingTimeout=5000.000ms
+    3: name='Window{986fb50 u0 com.komect.ajlauncher/com.komect.bussness.epg.EpgHomeActivity}', displayId=0, paused=false, hasFocus=true, hasWallpaper=false, visible=true, canReceiveKeys=true, flags=0x81810520, type=0x00000001, layer=0, frame=[0,0][1920,1200], scale=1.000000, touchableRegion=[0,0][1920,1200], inputFeatures=0x00000000, ownerPid=4550, ownerUid=1000, dispatchingTimeout=5000.000ms
+  MonitoringChannels:
+    0: 'WindowManager (server)'
+  RecentQueue: length=10
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (763.5, 684.0)]), policyFlags=0x62000000, age=115063.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (763.5, 684.0)]), policyFlags=0x62000000, age=115055.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (763.5, 684.0)]), policyFlags=0x62000000, age=115046.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (763.5, 684.0)]), policyFlags=0x62000000, age=115038.5ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (763.5, 684.0)]), policyFlags=0x62000000, age=115029.9ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (763.5, 684.0)]), policyFlags=0x62000000, age=115021.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (763.5, 684.0)]), policyFlags=0x62000000, age=115013.4ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (763.5, 684.0)]), policyFlags=0x62000000, age=115004.7ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (763.5, 684.0)]), policyFlags=0x62000000, age=114996.3ms
+    MotionEvent(deviceId=1, source=0x00001002, action=UP, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (763.5, 684.0)]), policyFlags=0x62000000, age=114988.9ms
+  PendingEvent: <none>
+  InboundQueue: <empty>
+  ReplacedKeys: <empty>
+  Connections:
+    0: channelName='WindowManager (server)', windowName='monitor', status=NORMAL, monitor=true, inputPublisherBlocked=false
+      OutboundQueue: <empty>
+      WaitQueue: <empty>
+    1: channelName='7cc31e4 com.android.systemui (server)', windowName='Window{7cc31e4 u0 com.android.systemui}', status=NORMAL, monitor=false, inputPublisherBlocked=false
+      OutboundQueue: <empty>
+      WaitQueue: <empty>
+    2: channelName='8751720 com.android.systemui (server)', windowName='Window{8751720 u0 com.android.systemui}', status=NORMAL, monitor=false, inputPublisherBlocked=false
+      OutboundQueue: <empty>
+      WaitQueue: <empty>
+    3: channelName='8a01f4e com.android.systemui (server)', windowName='Window{8a01f4e u0 com.android.systemui}', status=NORMAL, monitor=false, inputPublisherBlocked=false
+      OutboundQueue: <empty>
+      WaitQueue: <empty>
+    4: channelName='986fb50 com.komect.ajlauncher/com.komect.bussness.epg.EpgHomeActivity (server)', windowName='Window{986fb50 u0 com.komect.ajlauncher/com.komect.bussness.epg.EpgHomeActivity}', status=NORMAL, monitor=false, inputPublisherBlocked=false
+      OutboundQueue: <empty>
+      WaitQueue: <empty>
+  AppSwitch: not pending
+  Configuration:
+    KeyRepeatDelay: 50.0ms
+    KeyRepeatTimeout: 500.0ms
+
+Input Dispatcher State at time of last ANR:
+  ANR:
+    Time: 2026-10-19 11:25:39
+    Window: Window{cd048f9 u0 com.example.anrlab/com.example.anrlab.MainActivity}
+    DispatchLatency: 9321.4ms
+    WaitDuration: 5002.1ms
+    Reason: Waiting to send non-key event because the touched window has not finished processing certain input events that were delivered to it over 500.0ms ago.  Wait queue length: 1.  Wait queue head age: 11038.4ms.
+  DispatchEnabled: 1
+  DispatchFrozen: 0
+  FocusedApplication: name='AppWindowToken{30c2548 token=Token{78373eb ActivityRecord{d901b3a u0 com.example.anrlab/.MainActivity t39}}}', dispatchingTimeout=5000.000ms
+  FocusedWindow: name='Window{cd048f9 u0 com.example.anrlab/com.example.anrlab.MainActivity}'
+  TouchStates: <no displays touched>
+  Windows:
+    0: name='Window{8a01f4e u0 com.android.systemui}', displayId=0, paused=false, hasFocus=false, hasWallpaper=false, visible=false, canReceiveKeys=false, flags=0x8184003c, type=0x000007da, layer=0, frame=[0,0][1920,0], scale=1.000000, touchableRegion=<empty>, inputFeatures=0x00000000, ownerPid=4055, ownerUid=10004, dispatchingTimeout=5000.000ms
+    1: name='Window{7cc31e4 u0 com.android.systemui}', displayId=0, paused=false, hasFocus=false, hasWallpaper=false, visible=true, canReceiveKeys=false, flags=0x81840068, type=0x000007de, layer=0, frame=[0,0][18,1200], scale=1.000000, touchableRegion=[0,0][18,1200], inputFeatures=0x00000000, ownerPid=4055, ownerUid=10004, dispatchingTimeout=5000.000ms
+    2: name='Window{8751720 u0 com.android.systemui}', displayId=0, paused=false, hasFocus=false, hasWallpaper=false, visible=true, canReceiveKeys=false, flags=0x81840068, type=0x000007de, layer=0, frame=[0,0][1920,30], scale=1.000000, touchableRegion=[0,0][1920,30], inputFeatures=0x00000000, ownerPid=4055, ownerUid=10004, dispatchingTimeout=5000.000ms
+    3: name='Window{cd048f9 u0 com.example.anrlab/com.example.anrlab.MainActivity}', displayId=0, paused=false, hasFocus=true, hasWallpaper=false, visible=true, canReceiveKeys=true, flags=0x81810120, type=0x00000001, layer=0, frame=[0,0][1920,1200], scale=1.000000, touchableRegion=[0,0][1920,1200], inputFeatures=0x00000000, ownerPid=8214, ownerUid=10038, dispatchingTimeout=5000.000ms
+    4: name='Window{986fb50 u0 com.komect.ajlauncher/com.komect.bussness.epg.EpgHomeActivity}', displayId=0, paused=false, hasFocus=false, hasWallpaper=false, visible=false, canReceiveKeys=false, flags=0x81810520, type=0x00000001, layer=0, frame=[0,0][1920,1200], scale=1.000000, touchableRegion=[0,0][1920,1200], inputFeatures=0x00000000, ownerPid=4550, ownerUid=1000, dispatchingTimeout=5000.000ms
+  MonitoringChannels:
+    0: 'WindowManager (server)'
+  RecentQueue: length=10
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (565.5, 606.0)]), policyFlags=0x62000000, age=9905.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (565.5, 606.0)]), policyFlags=0x62000000, age=9896.9ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (565.5, 606.0)]), policyFlags=0x62000000, age=9888.5ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (565.5, 606.0)]), policyFlags=0x62000000, age=9880.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (565.5, 606.0)]), policyFlags=0x62000000, age=9871.9ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (565.5, 606.0)]), policyFlags=0x62000000, age=9863.1ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (565.5, 606.0)]), policyFlags=0x62000000, age=9854.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (565.5, 606.0)]), policyFlags=0x62000000, age=9846.5ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (565.5, 606.0)]), policyFlags=0x62000000, age=9838.1ms
+    MotionEvent(deviceId=1, source=0x00001002, action=UP, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (565.5, 606.0)]), policyFlags=0x62000000, age=9830.1ms
+  PendingEvent:
+    MotionEvent(deviceId=1, source=0x00001002, action=DOWN, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9329.5ms
+  InboundQueue: length=97
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9321.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9313.7ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9305.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9288.5ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9280.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9271.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9263.6ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9255.3ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9247.0ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9238.6ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9230.3ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9221.9ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9213.6ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9205.3ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9196.1ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9187.7ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9179.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9171.4ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9163.1ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9154.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=UP, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (595.5, 601.5)]), policyFlags=0x62000000, age=9146.7ms
+    MotionEvent(deviceId=1, source=0x00001002, action=DOWN, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8697.1ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8688.6ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8680.3ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8671.9ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8663.4ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8655.1ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8646.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8638.5ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8630.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8621.7ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8605.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8596.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8588.4ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8580.3ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8571.9ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8563.1ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8554.7ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8546.5ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8538.1ms
+    MotionEvent(deviceId=1, source=0x00001002, action=UP, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (544.5, 624.0)]), policyFlags=0x62000000, age=8530.1ms
+    MotionEvent(deviceId=1, source=0x00001002, action=DOWN, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8180.3ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8172.0ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8162.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8154.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8138.4ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8130.1ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8121.7ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8113.5ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8105.1ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8096.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8088.3ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8080.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8071.9ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8063.6ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8055.3ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8046.5ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8038.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=UP, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (526.5, 520.5)]), policyFlags=0x62000000, age=8030.6ms
+    MotionEvent(deviceId=1, source=0x00001002, action=DOWN, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7380.4ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7372.0ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7363.6ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7355.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7346.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7338.5ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7330.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7321.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7313.5ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7305.1ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7296.9ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7288.4ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7280.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7271.9ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7263.6ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7255.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7246.6ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7238.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=UP, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (757.5, 462.0)]), policyFlags=0x62000000, age=7230.1ms
+    MotionEvent(deviceId=1, source=0x00001002, action=DOWN, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4513.2ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4504.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4496.9ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4488.5ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4480.0ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4471.7ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4463.4ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4455.0ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4446.7ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4438.4ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4430.1ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4421.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4413.4ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4405.0ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4396.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4388.4ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4379.8ms
+    MotionEvent(deviceId=1, source=0x00001002, action=MOVE, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4371.4ms
+    MotionEvent(deviceId=1, source=0x00001002, action=UP, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (640.5, 682.5)]), policyFlags=0x62000000, age=4364.0ms
+  ReplacedKeys: <empty>
+  Connections:
+    0: channelName='cd048f9 com.example.anrlab/com.example.anrlab.MainActivity (server)', windowName='Window{cd048f9 u0 com.example.anrlab/com.example.anrlab.MainActivity}', status=NORMAL, monitor=false, inputPublisherBlocked=false
+      OutboundQueue: <empty>
+      WaitQueue: length=1
+        MotionEvent(deviceId=1, source=0x00001002, action=UP, actionButton=0x00000000, flags=0x00000000, metaState=0x00000000, buttonState=0x00000000, edgeFlags=0x00000000, xPrecision=0.7, yPrecision=0.7, displayId=0, pointers=[0: (675.0, 589.5)]), policyFlags=0x62000000, targetFlags=0x00004105, resolvedAction=1, age=11046.8ms, wait=11046.6ms
+    1: channelName='WindowManager (server)', windowName='monitor', status=NORMAL, monitor=true, inputPublisherBlocked=false
+      OutboundQueue: <empty>
+      WaitQueue: <empty>
+    2: channelName='7cc31e4 com.android.systemui (server)', windowName='Window{7cc31e4 u0 com.android.systemui}', status=NORMAL, monitor=false, inputPublisherBlocked=false
+      OutboundQueue: <empty>
+      WaitQueue: <empty>
+    3: channelName='8751720 com.android.systemui (server)', windowName='Window{8751720 u0 com.android.systemui}', status=NORMAL, monitor=false, inputPublisherBlocked=false
+      OutboundQueue: <empty>
+      WaitQueue: <empty>
+    4: channelName='8a01f4e com.android.systemui (server)', windowName='Window{8a01f4e u0 com.android.systemui}', status=NORMAL, monitor=false, inputPublisherBlocked=false
+      OutboundQueue: <empty>
+      WaitQueue: <empty>
+    5: channelName='986fb50 com.komect.ajlauncher/com.komect.bussness.epg.EpgHomeActivity (server)', windowName='Window{986fb50 u0 com.komect.ajlauncher/com.komect.bussness.epg.EpgHomeActivity}', status=NORMAL, monitor=false, inputPublisherBlocked=false
+      OutboundQueue: <empty>
+      WaitQueue: <empty>
+  AppSwitch: not pending
+  Configuration:
+    KeyRepeatDelay: 50.0ms
+    KeyRepeatTimeout: 500.0ms
+
+
