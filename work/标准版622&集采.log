@@ -2,8 +2,6 @@ bug/规范/要求 待确认
 31165: 待机退出移动高清
 31176: 音乐和悦看(听书)待机后有声音
 
-
-
 产测apk: com.yeker.factorytest.tool
 允许pm安装apk; sys.disable_adb_pm_install false
 下拉显示电视设置: persist.systemui.menu.device_setting_enable 为0时不显示
@@ -12,7 +10,6 @@ bug/规范/要求 待确认
 查看当前分辨率: cat sys/class/display/mode
 
 软探针device/amlogic目录要基于新代码合
-
 
 repo sync -j8 -f --no-tags --no-clone-bundle
 
@@ -30,7 +27,6 @@ vendor/starnet tmp_QPLTest
 frameworks/base aml/android-9.0.0_r3/mtv/2026_622
 system/vold aml/android-9.0.0_r3/mtv/2026_622
 
-
 pdm.cli set stbid reset
 pdm.cli set mac reset
 pdm.cli set mac_wifi reset
@@ -45,7 +41,6 @@ pdm.cli set sn 1664011529111135710000140
 pdm.cli set cmccpwd 37fcd9308f4f
 pdm.cli set cmei 111135710000140
 
-
 updater.cli --apply_url http://192.168.0.80:32823/s905l3ap-2609211558/out/target/product/p291_iptv/update_sys_s905l3ap_tb611.zip --reboot
 
 persist.vendor.ifly.audiomiddle.pcm_log
@@ -55,10 +50,8 @@ echo 1 > /sys/class/ykgpios/csk_reset/value
 stop iflytek_audio_middleware
 start iflytek_audio_middleware
 
-
 ls -l /vendor/bin/iflytek_audio_launcher
 ls -l /vendor/bin/iflytek_audio_middleware
-
 
 tinycap /sdcard/cap_2.wav -D 1 -d 6 -c 4 -r 48000
 
@@ -74,21 +67,17 @@ ok - supported    fail - not supported
 打开CEC: settings put global hdmi_control_enabled 1
 关闭CEC: settings put global hdmi_control_enabled 0
 
-
 source ./build/envsetup.sh
 export PROJECT_ID=t249 PROJECT_TYPE=sdmobile OEM_TARGET=p291_tb611
 lunch p291_iptv-userdebug
 ./build.sh -k -i  -c -KAu
 
-
 com.cmcc.lingxiagent
 com.cmcc.lingxiagent.action.ASR_SERVICE
-
 
 录音
 stop iflytek_audio_middleware
 tinycap /sdcard/cap.wav -D 1 -d 6 -c 4 -r 48000
-
 
 com.starnet.mictest
 
@@ -99,17 +88,13 @@ persist.sys.jarvis_mic_debug
 
 persist.vendor.audio.aloop.enable
 
-
 com.chinamobile.sh.test 测试包名
 
-
 com.cmhi.universalapp.aiotel
-
 
 麦克风管控
 frameworks/base
 device/amlogic
-
 
 电话记录: com.android.providers.telephony
 相机2: com.android.camera2
@@ -118,8 +103,34 @@ TelephonyProvider
 
 35.50-V1.0.1-YDJC-v0.0.1-20261030
 
-
 m vold -j8
 scp 80_32822_622:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/system/bin/vold "/Users/jhkuang/Desktop/work/middle_screen/过渡版-622/U盘拔掉后目录不自动删除"
 
+查看开放的端口：
+netstat -tlnp
 
+29号以处理问题: 
+31229: 升级机顶盒版本也能升级，功能不正常
+31173: 端口开放和明文存储串口登录密码
+31157: 恢复出厂失败
+31145: 接入HDMI, 查看分辨率, 720x480P 60HZ重复显示
+
+驱动问题: 
+31190: 插拔电源线无法开机: 没有把MCU的输入引脚配置成上拉
+
+杭研问题：
+31130: 【系统设置测试】点击版本更新，界面会闪跳首页画面或其他画面
+
+待确定问题：
+31165: 设备解除待机状态，移动高清应用未被退出
+31176: 待机状态下，移动音乐和悦看有音频输出
+
+rm -rf /data/logcat.log; logcat -c; logcat -G 100M; logcat -v threadtime > /data/logcat.log
+
+logcat > /data/install_001.log &
+
+screenrecord /sdcard/install.mp4
+
+top -m 20 > /data/top_2901.txt
+
+top -m 20
