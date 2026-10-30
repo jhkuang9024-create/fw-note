@@ -11,6 +11,9 @@ bug/规范/要求 待确认
 
 软探针device/amlogic目录要基于新代码合
 
+bootloader/uboot-repo/bl33/board/amlogic/configs/sm1_t249_v1.h
+otg_device 1
+
 repo sync -j8 -f --no-tags --no-clone-bundle
 
 scp 80_32822_622:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/aml_upgrade_package.img "/Users/jhkuang/Desktop/work/middle_screen/过渡版-622/out/10-19/"
@@ -115,22 +118,38 @@ netstat -tlnp
 31157: 恢复出厂失败
 31145: 接入HDMI, 查看分辨率, 720x480P 60HZ重复显示
 
+30号处理问题:
+31183: 设备播放咪咕游戏TV版里面的游戏后插入U盘无法识别，移动高清无法播放
+31180: 设备播放咪咕游戏TV版里面的游戏后点击退出设备黑屏
+31165: 设备解除待机状态，移动高清应用未被退出
+31176: 待机状态下，移动音乐和悦看有音频输出
+
+晶晨问题:
+31278: 多次插拔HDMI后电视端无输出
+
 驱动问题: 
 31190: 插拔电源线无法开机: 没有把MCU的输入引脚配置成上拉
 
 杭研问题：
-31130: 【系统设置测试】点击版本更新，界面会闪跳首页画面或其他画面
+31130: 【系统设置测试】点击版本更新，界面会闪跳首页画面或其他画面（厂商适配）
 
-待确定问题：
-31165: 设备解除待机状态，移动高清应用未被退出
-31176: 待机状态下，移动音乐和悦看有音频输出
 
 rm -rf /data/logcat.log; logcat -c; logcat -G 100M; logcat -v threadtime > /data/logcat.log
 
 logcat > /data/install_001.log &
-
 screenrecord /sdcard/install.mp4
-
 top -m 20 > /data/top_2901.txt
-
 top -m 20
+
+
+获取亮度：
+settings get system screen_brightness
+
+/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/system/framework
+scp 80_32822_622:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/system/framework/oat/arm/{services.art,services.odex,services.vdex} "/Users/jhkuang/Desktop/work/middle_screen/过渡版-622/休眠退出应用&静音"
+scp 80_32822_622:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/system/framework/{services.jar,services.jar.prof} "/Users/jhkuang/Desktop/work/middle_screen/过渡版-622/休眠退出应用&静音"
+
+系统休眠时 Notifier.java:751 向所有应用发了 cmcc.intent.action.SCREEN_OFF 和 cmcc.intent.action.HIBERNATE（CMCC 定制广播，Notifier.java:743-756）；
+移动云盘收到后自己 finish() 掉 CaiYunMainActivity 和 VideoPlayActivity，进程随后退出（WIN DEATH）；
+
+备选方案: 熄屏时关背光，不真正休眠
