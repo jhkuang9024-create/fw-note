@@ -29,7 +29,7 @@ AppSecret:59571ed07a3c0695a088c915ce94f05f
 
 分支：aml/android-9.0.0_r3/mtv/2026
 
-U盘adb: bootloader/uboot-repo/bl33/board/amlogic/configs/sm1_t239_v1.h:117: "otg_device=1\0"\
+USB adb: bootloader/uboot-repo/bl33/board/amlogic/configs/sm1_t249_v1.h:117: "otg_device=1\0"\
 
 # 禁止内核日志输出
 echo 0 > /proc/sys/kernel/printk

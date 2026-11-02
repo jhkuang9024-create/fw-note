@@ -28,7 +28,7 @@ bootloader/uboot-repo/bl33 aml/android-9.0.0_r3/mtv/2026_622
 system/core  rootRelay_mtv2026
 vendor/starnet tmp_QPLTest
 frameworks/base aml/android-9.0.0_r3/mtv/2026_622
-system/vold aml/android-9.0.0_r3/mtv/2026_622
+hardware/amlogic/audio aml/android-9.0.0_r3/mtv/2026_622
 
 pdm.cli set stbid reset
 pdm.cli set mac reset
@@ -145,11 +145,28 @@ top -m 20
 获取亮度：
 settings get system screen_brightness
 
-/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/system/framework
-scp 80_32822_622:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/system/framework/oat/arm/{services.art,services.odex,services.vdex} "/Users/jhkuang/Desktop/work/middle_screen/过渡版-622/休眠退出应用&静音"
-scp 80_32822_622:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/system/framework/{services.jar,services.jar.prof} "/Users/jhkuang/Desktop/work/middle_screen/过渡版-622/休眠退出应用&静音"
-
 系统休眠时 Notifier.java:751 向所有应用发了 cmcc.intent.action.SCREEN_OFF 和 cmcc.intent.action.HIBERNATE（CMCC 定制广播，Notifier.java:743-756）；
 移动云盘收到后自己 finish() 掉 CaiYunMainActivity 和 VideoPlayActivity，进程随后退出（WIN DEATH）；
 
 备选方案: 熄屏时关背光，不真正休眠
+
+/home/ws/s905l3ap-2609211558/bootloader/uboot-repo/bl33/board/amlogic/configs/sm1_t249_v1.h
+otg_device
+
+
+PRODUCT_SUPPORT_CONSOLE_PASSWORD := true
+
+private String getTopActivityPackage() {
+        try {
+            List<RunningTaskInfo> tasks = ActivityManager.getService().getTasks(1);
+            if (tasks != null && !tasks.isEmpty() && tasks.get(0).topActivity != null) {
+                return tasks.get(0).topActivity.getPackageName();
+            }
+        } catch (Exception e) { 
+            e.printStackTrace();
+        }
+        return "";
+    }
+    private boolean isTb622Device() {
+        return "TB622".equals(SystemProperties.get("ro.build.deviceName", ""));
+    }
