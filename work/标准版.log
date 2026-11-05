@@ -408,6 +408,7 @@ http://git.starnetuc.info:8929/cm-pdt/device_cmcc_nmg
 
 
 scp 80_32788_612:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/{p291_tb611.img,update_sys_s905l3ap_tb611.zip} "/Users/jhkuang/Desktop/work/middle_screen/过渡版-612/out/10-15/"
+scp 80_32788_612:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/system/framework/{services.jar, services.jar.prof } "/Users/jhkuang/Desktop/work/middle_screen/过渡版-612/out/services"
 
 console:/ # getprop ro.serialno
 0099360080742080260990848E81E4B1
