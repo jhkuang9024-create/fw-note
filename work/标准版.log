@@ -407,7 +407,7 @@ source build/envsetup.sh && lunch cmcc_nmg-userdebug && make otapackage
 http://git.starnetuc.info:8929/cm-pdt/device_cmcc_nmg
 
 
-scp 80_32788_612:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/{p291_tb611.img,update_sys_s905l3ap_tb611.zip} "/Users/jhkuang/Desktop/work/middle_screen/过渡版-612/out/10-15/"
+scp 80_32788_612:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/{p291_tb611.img,update_sys_s905l3ap_tb611.zip} "/Users/jhkuang/Desktop/work/middle_screen/过渡版-612/out/11-09-02-智能体14"
 scp 80_32788_612:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/system/framework/{services.jar, services.jar.prof } "/Users/jhkuang/Desktop/work/middle_screen/过渡版-612/out/services"
 
 console:/ # getprop ro.serialno
@@ -435,3 +435,5 @@ cp build/u-boot.bin.sd.bin ../../device/amlogic/p291_iptv/upgrade_t249/u-boot.bi
 
 包	     合计	 apk	 oat	jni	 业务      包名
 eduApp	260M	145M	62M	   51M	爱家伴学   com.cmri.aijia.edu.pad
+
+system/core 目录下的dd-usb分支是基于 b4a33045e 拉的（aml/android-9.0.0_r3/mtv/2026分支在此之后还有15个提交）
