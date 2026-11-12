@@ -408,7 +408,7 @@ source build/envsetup.sh && lunch cmcc_nmg-userdebug && make otapackage
 http://git.starnetuc.info:8929/cm-pdt/device_cmcc_nmg
 
 
-scp 80_32788_612:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/{p291_tb611.img,update_sys_s905l3ap_tb611.zip} "/Users/jhkuang/Desktop/work/middle_screen/过渡版-612/out/11-11-03-install"
+scp 80_32788_612:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/{p291_tb611.img,update_sys_s905l3ap_tb611.zip} "/Users/jhkuang/Desktop/work/middle_screen/过渡版-612/out/11-12-01"
 scp 80_32788_612:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/system/framework/{services.jar, services.jar.prof } "/Users/jhkuang/Desktop/work/middle_screen/过渡版-612/out/services"
 
 scp 80_32788_612:/home/ws/s905l3ap-2609211558/out/target/product/p291_iptv/aml_upgrade_package.img "/Users/jhkuang/Desktop/work/middle_screen/过渡版-612/11-night"
